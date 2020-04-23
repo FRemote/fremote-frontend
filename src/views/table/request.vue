@@ -5,6 +5,20 @@
       <el-select v-model="listQuery.status" placeholder="Filter by status" clearable class="filter-item" style="width: 150px">
         <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
       </el-select>
+      <el-date-picker
+        v-model="value2"
+        type="datetime"
+        placeholder="From"
+        class="filter-item"
+        :picker-options="pickerOptions">
+      </el-date-picker>
+      <el-date-picker
+        v-model="value2"
+        type="datetime"
+        placeholder="To"
+        class="filter-item"
+        :picker-options="pickerOptions">
+      </el-date-picker>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         Search
       </el-button>
@@ -86,9 +100,9 @@
         </template>
       </el-table-column> 
     </el-table>
-
+    <el-container>
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
-
+    </el-container>
     <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
       <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
         <el-table-column prop="key" label="Channel" />
@@ -167,7 +181,7 @@ export default {
     // this.getList()
     this.total = 100
     console.log(thaycacac)
-    this.list = thaycacac.filter(item => item.isAccept === false)
+    this.list = thaycacac // .filter(item => item.isAccept === false)
     this.listLoading = false
   },
   methods: {
