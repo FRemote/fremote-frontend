@@ -43,61 +43,50 @@
 
        <el-table-column label="Employee" min-width="150px">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <span class="link-type" @click="handleUpdate(row)">{{ row.name }}</span>
+          <el-tag>{{ row.department }}</el-tag>
         </template>
       </el-table-column>
 
-      <el-table-column label="Date" width="150px" align="center">
+      <el-table-column label="Position" width="110px" align="center">
         <template slot-scope="{row}">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ row.position }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Created at" width="150px" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.createdAt }}</span> <!-- | parseTime('{y}-{m}-{d} {h}:{i}') -->
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Request at" width="150px" align="center">
+        <template slot-scope="{row}">
+          <span>{{ row.requestAt }}</span> <!-- | parseTime('{y}-{m}-{d} {h}:{i}') -->
         </template>
       </el-table-column>
      
-      <el-table-column label="Author" width="110px" align="center">
-        <template slot-scope="{row}">
-          <span>{{ row.author }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column v-if="showReviewer" label="Reviewer" width="110px" align="center">
-        <template slot-scope="{row}">
-          <span style="color:red;">{{ row.reviewer }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Imp" width="80px">
-        <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon" />
-        </template>
-      </el-table-column>
-      <el-table-column label="Readings" align="center" width="95">
-        <template slot-scope="{row}">
-          <span v-if="row.pageviews" class="link-type" @click="handleFetchPv(row.pageviews)">{{ row.pageviews }}</span>
-          <span v-else>0</span>
-        </template>
-      </el-table-column>
       <el-table-column label="Status" class-name="status-col" width="100">
         <template slot-scope="{row}">
-          <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
+          <el-tag :type="row.isAccept === true ? 'success' : 'danger'">
+            {{ row.isAccept | statusFilter}}
           </el-tag>
         </template>
       </el-table-column>
+
       <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
             Edit
           </el-button>
           <el-button v-if="row.status!='published'" size="mini" type="success" @click="handleModifyStatus(row,'published')">
-            Publish
-          </el-button>
-          <el-button v-if="row.status!='draft'" size="mini" @click="handleModifyStatus(row,'draft')">
-            Draft
+            Accept
           </el-button>
           <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
-            Delete
+            Reject
           </el-button>
         </template>
-      </el-table-column>
+      </el-table-column> 
     </el-table>
 
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
@@ -153,7 +142,8 @@
 import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
-import Pagination from '@/components/Pagination' // secondary package based on el-pagination
+import Pagination from '@/components/Pagination'
+import thaycacac from './data'
 
 const calendarTypeOptions = [
   { key: 'CN', display_name: 'IT Department' },
@@ -173,12 +163,7 @@ export default {
   directives: { waves },
   filters: {
     statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger'
-      }
-      return statusMap[status]
+      return status === true ? 'allow' : 'not allow'
     },
     typeFilter(type) {
       return calendarTypeKeyValue[type]
@@ -229,13 +214,16 @@ export default {
     }
   },
   created() {
-    this.getList()
+    // this.getList()
+    this.total = 100
+    console.log(thaycacac)
+    this.list = thaycacac
+    this.listLoading = false
   },
   methods: {
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
-        console.log(response);
         this.list = response.data.items
         this.total = response.data.total
 
@@ -247,13 +235,6 @@ export default {
     handleFilter() {
       this.listQuery.page = 1
       this.getList()
-    },
-    handleModifyStatus(row, status) {
-      this.$message({
-        message: '操作Success',
-        type: 'success'
-      })
-      row.status = status
     },
     sortChange(data) {
       const { prop, order } = data
