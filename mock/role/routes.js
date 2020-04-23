@@ -118,18 +118,6 @@ export const asyncRoutes = [
         meta: { title: 'Drag Dialog' }
       },
       {
-        path: 'drag-select',
-        component: 'views/components-demo/drag-select',
-        name: 'DragSelectDemo',
-        meta: { title: 'Drag Select' }
-      },
-      {
-        path: 'dnd-list',
-        component: 'views/components-demo/dnd-list',
-        name: 'DndListDemo',
-        meta: { title: 'Dnd List' }
-      },
-      {
         path: 'drag-kanban',
         component: 'views/components-demo/drag-kanban',
         name: 'DragKanbanDemo',
