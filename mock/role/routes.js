@@ -198,36 +198,6 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/charts',
-    component: 'layout/Layout',
-    redirect: 'noRedirect',
-    name: 'Charts',
-    meta: {
-      title: 'Charts',
-      icon: 'chart'
-    },
-    children: [
-      {
-        path: 'keyboard',
-        component: 'views/charts/keyboard',
-        name: 'KeyboardChart',
-        meta: { title: 'Keyboard Chart', noCache: true }
-      },
-      {
-        path: 'line',
-        component: 'views/charts/line',
-        name: 'LineChart',
-        meta: { title: 'Line Chart', noCache: true }
-      },
-      {
-        path: 'mixchart',
-        component: 'views/charts/mixChart',
-        name: 'MixChart',
-        meta: { title: 'Mix Chart', noCache: true }
-      }
-    ]
-  },
-  {
     path: '/nested',
     component: 'layout/Layout',
     redirect: '/nested/menu1/menu1-1',
@@ -373,55 +343,6 @@ export const asyncRoutes = [
         component: 'views/excel/upload-excel',
         name: 'UploadExcel',
         meta: { title: 'Upload Excel' }
-      }
-    ]
-  },
-
-  {
-    path: '/zip',
-    component: 'layout/Layout',
-    redirect: '/zip/download',
-    alwaysShow: true,
-    meta: { title: 'Zip', icon: 'zip' },
-    children: [
-      {
-        path: 'download',
-        component: 'views/zip/index',
-        name: 'ExportZip',
-        meta: { title: 'Export Zip' }
-      }
-    ]
-  },
-
-  {
-    path: '/pdf',
-    component: 'layout/Layout',
-    redirect: '/pdf/index',
-    children: [
-      {
-        path: 'index',
-        component: 'views/pdf/index',
-        name: 'PDF',
-        meta: { title: 'PDF', icon: 'pdf' }
-      }
-    ]
-  },
-  {
-    path: '/pdf/download',
-    component: 'views/pdf/download',
-    hidden: true
-  },
-
-  {
-    path: '/theme',
-    component: 'layout/Layout',
-    redirect: 'noRedirect',
-    children: [
-      {
-        path: 'index',
-        component: 'views/theme/index',
-        name: 'Theme',
-        meta: { title: 'Theme', icon: 'theme' }
       }
     ]
   },
