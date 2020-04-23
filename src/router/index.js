@@ -69,7 +69,7 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   {
-    path: '/table',
+    path: '/requests',
     component: Layout,
     name: 'Request',
     meta: {
@@ -78,7 +78,7 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'request',
+        path: '',
         component: () => import('@/views/table/request'),
         name: 'Request',
         meta: { title: 'Request' }
@@ -86,7 +86,7 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/table',
+    path: '/working-today',
     component: Layout,
     name: 'Table',
     meta: {
@@ -95,7 +95,7 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'working-today',
+        path: '',
         component: () => import('@/views/table/working-today'),
         name: 'Working today',
         meta: { title: 'Working today' }
@@ -183,7 +183,7 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
