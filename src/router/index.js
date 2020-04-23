@@ -3,12 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-/* Layout */
 import Layout from '@/layout'
-
-/* Router Modules */
 import componentsRouter from './modules/components'
-import tableRouter from './modules/table'
 
 export const constantRoutes = [
   {
@@ -71,21 +67,51 @@ export const constantRoutes = [
   }
 ]
 
-/**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
- */
 export const asyncRoutes = [
+  {
+    path: '/table',
+    component: Layout,
+    name: 'Request',
+    meta: {
+      title: 'Request work from home',
+      icon: 'guide'
+    },
+    children: [
+      {
+        path: 'request',
+        component: () => import('@/views/table/request'),
+        name: 'Request',
+        meta: { title: 'Request' }
+      }
+    ]
+  },
+  {
+    path: '/table',
+    component: Layout,
+    name: 'Table',
+    meta: {
+      title: 'Working today',
+      icon: 'peoples'
+    },
+    children: [
+      {
+        path: 'working-today',
+        component: () => import('@/views/table/working-today'),
+        name: 'Working today',
+        meta: { title: 'Working today' }
+      }
+    ]
+  },
   {
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
-    alwaysShow: true, // will always show the root menu
+    alwaysShow: true,
     name: 'Permission',
     meta: {
       title: 'Permission',
       icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      roles: ['admin', 'editor']
     },
     children: [
       {
@@ -132,7 +158,6 @@ export const asyncRoutes = [
   },
 
   componentsRouter,
-  tableRouter,
 
   {
     path: '/excel',
