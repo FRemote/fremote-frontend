@@ -9,7 +9,6 @@ import Layout from '@/layout'
 /* Router Modules */
 import componentsRouter from './modules/components'
 import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
 
 export const constantRoutes = [
   {
@@ -133,21 +132,7 @@ export const asyncRoutes = [
   },
 
   componentsRouter,
-  nestedRouter,
   tableRouter,
-
-  {
-    path: '/tab',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/tab/index'),
-        name: 'Tab',
-        meta: { title: 'Tab', icon: 'tab' }
-      }
-    ]
-  },
 
   {
     path: '/excel',
@@ -164,35 +149,6 @@ export const asyncRoutes = [
         component: () => import('@/views/excel/export-excel'),
         name: 'ExportExcel',
         meta: { title: 'Export Excel' }
-      },
-      {
-        path: 'export-selected-excel',
-        component: () => import('@/views/excel/select-excel'),
-        name: 'SelectExcel',
-        meta: { title: 'Export Selected' }
-      },
-      {
-        path: 'export-merge-header',
-        component: () => import('@/views/excel/merge-header'),
-        name: 'MergeHeader',
-        meta: { title: 'Merge Header' }
-      },
-      {
-        path: 'upload-excel',
-        component: () => import('@/views/excel/upload-excel'),
-        name: 'UploadExcel',
-        meta: { title: 'Upload Excel' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
-        meta: { title: 'External Link', icon: 'link' }
       }
     ]
   },

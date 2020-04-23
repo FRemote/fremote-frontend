@@ -197,79 +197,6 @@ export const asyncRoutes = [
       }
     ]
   },
-  {
-    path: '/nested',
-    component: 'layout/Layout',
-    redirect: '/nested/menu1/menu1-1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: 'views/nested/menu1/index',
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        redirect: '/nested/menu1/menu1-1',
-        children: [
-          {
-            path: 'menu1-1',
-            component: 'views/nested/menu1/menu1-1',
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: 'views/nested/menu1/menu1-2',
-            name: 'Menu1-2',
-            redirect: '/nested/menu1/menu1-2/menu1-2-1',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: 'views/nested/menu1/menu1-2/menu1-2-1',
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: 'views/nested/menu1/menu1-2/menu1-2-2',
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: 'views/nested/menu1/menu1-3',
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        name: 'Menu2',
-        component: 'views/nested/menu2/index',
-        meta: { title: 'Menu2' }
-      }
-    ]
-  },
-
-  {
-    path: '/tab',
-    component: 'layout/Layout',
-    children: [
-      {
-        path: 'index',
-        component: 'views/tab/index',
-        name: 'Tab',
-        meta: { title: 'Tab', icon: 'tab' }
-      }
-    ]
-  },
 
   {
     path: '/excel',
@@ -286,24 +213,6 @@ export const asyncRoutes = [
         component: 'views/excel/export-excel',
         name: 'ExportExcel',
         meta: { title: 'Export Excel' }
-      },
-      {
-        path: 'export-selected-excel',
-        component: 'views/excel/select-excel',
-        name: 'SelectExcel',
-        meta: { title: 'Select Excel' }
-      },
-      {
-        path: 'export-merge-header',
-        component: 'views/excel/merge-header',
-        name: 'MergeHeader',
-        meta: { title: 'Merge Header' }
-      },
-      {
-        path: 'upload-excel',
-        component: 'views/excel/upload-excel',
-        name: 'UploadExcel',
-        meta: { title: 'Upload Excel' }
       }
     ]
   },
@@ -317,17 +226,6 @@ export const asyncRoutes = [
         component: 'views/i18n-demo/index',
         name: 'I18n',
         meta: { title: 'I18n', icon: 'international' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: 'layout/Layout',
-    children: [
-      {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
-        meta: { title: 'External Link', icon: 'link' }
       }
     ]
   },
