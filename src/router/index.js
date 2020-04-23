@@ -86,6 +86,18 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/requests/:id',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/request'),
+        meta: { title: 'Request detail' }
+      },
+    ]
+  },
+  {
     path: '/working-today',
     component: Layout,
     name: 'Table',
