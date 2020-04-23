@@ -11,6 +11,9 @@
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
         Export
       </el-button>
+      <el-checkbox v-model="showAll" class="filter-item" style="margin-left:15px;" @change="showAllData">
+        All
+      </el-checkbox>
     </div>
 
     <el-table
@@ -31,7 +34,7 @@
 
        <el-table-column label="Employee" min-width="150px">
         <template slot-scope="{row}">
-          <span class="link-type" @click="handleUpdate(row)">{{ row.name }}</span>
+          <router-link class="link-type" :to="`requests/${row.id}`">{{ row.name }}</router-link>
         </template>
       </el-table-column>
 
@@ -69,9 +72,11 @@
 
       <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
         <template slot-scope="{row,$index}">
-          <el-button type="primary" size="mini" @click="handleUpdate(row)">
-            View
-          </el-button>
+          <router-link :to="`requests/${row.id}`">
+            <el-button type="primary" size="mini">
+              View
+            </el-button>
+          </router-link>
           <el-button v-if="row.isAccept" size="mini" type="success" @click="handleModifyStatus(row,'published')">
             Accept
           </el-button>
@@ -122,13 +127,11 @@ export default {
   filters: {
     statusFilter(status) {
       return status === true ? 'allow' : 'not allow'
-    },
-    typeFilter(type) {
-      return calendarTypeKeyValue[type]
     }
   },
   data() {
     return {
+      showAll: false,
       tableKey: 0,
       list: null,
       total: 0,
@@ -164,10 +167,13 @@ export default {
     // this.getList()
     this.total = 100
     console.log(thaycacac)
-    this.list = thaycacac
+    this.list = thaycacac.filter(item => item.isAccept === false)
     this.listLoading = false
   },
   methods: {
+    showAllData() {
+      this.list = thaycacac
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then(response => {
