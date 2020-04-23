@@ -26,8 +26,6 @@ export default {
     this.destroyListener()
   },
   methods: {
-    // use $_ for mixins properties
-    // https://vuejs.org/v2/style-guide/index.html#Private-property-names-essential
     $_sidebarResizeHandler(e) {
       if (e.propertyName === 'width') {
         this.$_resizeHandler()
