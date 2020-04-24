@@ -52,7 +52,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Department" width="140px" align="center">
+      <el-table-column label="Department" width="160px" align="center">
         <template slot-scope="{row}">
           <span>{{ row.department }}</span>
         </template>
@@ -84,19 +84,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
-        <template slot-scope="{row,$index}">
+      <el-table-column label="Actions" align="center" width="100" class-name="small-padding fixed-width">
+        <template slot-scope="{row}">
           <router-link :to="`requests/${row.id}`">
             <el-button type="primary" size="mini">
               View
             </el-button>
           </router-link>
-          <el-button v-if="row.isAccept" size="mini" type="success" @click="handleModifyStatus(row,'published')">
-            Accept
-          </el-button>
-          <el-button v-if="row.isAccept" size="mini" type="danger" @click="handleDelete(row,$index)">
-            Reject
-          </el-button>
         </template>
       </el-table-column> 
     </el-table>

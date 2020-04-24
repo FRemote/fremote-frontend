@@ -29,7 +29,7 @@
       <el-table-column class-name="status-col" label="Status" width="150">
         <template slot-scope="{ row }">
           <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
+            {{ row.isAccept | statusFilter}}
           </el-tag>
         </template>
       </el-table-column>
@@ -91,8 +91,7 @@ export default {
   name: "InlineEditTable",
   filters: {
     statusFilter(status) {
-      const stt = status ? "Done" : "Working";
-      return stt;
+      return status === true ? "Done" : "Working";
     }
   },
   data() {

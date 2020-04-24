@@ -3,8 +3,9 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-import Layout from "@/layout";
-import componentsRouter from "./modules/components";
+
+import Layout from '@/layout'
+
 
 export const constantRoutes = [
   {
@@ -170,22 +171,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: "/icon",
-    component: Layout,
-    children: [
-      {
-        path: "index",
-        component: () => import("@/views/icons/index"),
-        name: "Icons",
-        meta: { title: "Icons", icon: "icon", noCache: true }
-      }
-    ]
-  },
-
-  componentsRouter,
-
-  {
-    path: "/excel",
+    path: '/excel',
     component: Layout,
     redirect: "/excel/export-excel",
     name: "Excel",
@@ -195,10 +181,10 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: "export-excel",
-        component: () => import("@/views/excel/export-excel"),
-        name: "ExportExcel",
-        meta: { title: "Export Excel" }
+        path: 'export-excel',
+        component: () => import('@/views/excel/export-excel'),
+        name: 'ExportExcel',
+        meta: { title: 'Export Data' }
       }
     ]
   },
