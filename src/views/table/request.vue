@@ -95,15 +95,6 @@
     <el-container>
     <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
     </el-container>
-    <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
-      <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
-        <el-table-column prop="key" label="Channel" />
-        <el-table-column prop="pv" label="Pv" />
-      </el-table>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false">Confirm</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
@@ -115,10 +106,10 @@ import Pagination from '@/components/Pagination'
 import thaycacac from './data'
 
 const calendarTypeOptions = [
-  { key: 'CN', display_name: 'IT Department' },
-  { key: 'US', display_name: 'HR Department' },
-  { key: 'JP', display_name: 'OP Department' },
-  { key: 'EU', display_name: 'MKT Department' }
+  { key: 'IT', display_name: 'IT Department' },
+  { key: 'HR', display_name: 'HR Department' },
+  { key: 'OP', display_name: 'OP Department' },
+  { key: 'MKT', display_name: 'MKT Department' }
 ]
 
 const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
@@ -152,22 +143,7 @@ export default {
         type: undefined,
         sort: '+id'
       },
-      importanceOptions: [1, 2, 3],
       calendarTypeOptions,
-      sortOptions: [{ label: 'ID Ascending', key: '+id' }, { label: 'ID Descending', key: '-id' }],
-      dialogFormVisible: false,
-      dialogStatus: '',
-      textMap: {
-        update: 'Edit',
-        create: 'Create'
-      },
-      dialogPvVisible: false,
-      pvData: [],
-      rules: {
-        type: [{ required: true, message: 'type is required', trigger: 'change' }],
-        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-        title: [{ required: true, message: 'title is required', trigger: 'blur' }]
-      },
       downloadLoading: false
     }
   },
