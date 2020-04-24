@@ -165,7 +165,7 @@ export const asyncRoutes = [
         name: "PagePermission",
         meta: {
           title: "Page Permission",
-          roles: ["admin"] // or you can only set roles in sub nav
+          roles: ["admin"]
         }
       },
       {
@@ -174,7 +174,6 @@ export const asyncRoutes = [
         name: "DirectivePermission",
         meta: {
           title: "Directive Permission"
-          // if do not set roles, means: this page does not require permission
         }
       },
       {
@@ -208,7 +207,6 @@ export const asyncRoutes = [
     ]
   },
 
-  // 404 page must be placed at the end !!!
   { path: "*", redirect: "/404", hidden: true }
 ];
 
@@ -221,7 +219,6 @@ const createRouter = () =>
 
 const router = createRouter();
 
-// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter();
   router.matcher = newRouter.matcher; // reset router
