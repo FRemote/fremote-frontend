@@ -1,65 +1,87 @@
 <template>
   <div class="app-container">
-    <el-steps :active="active" finish-status="success" style="margin: 10px 50px 50px 50px">
-      <el-step title="Step 1" description="Request detail">></el-step>
-      <el-step title="Step 2" description="Todo list"></el-step>
-      <el-step title="Step 3" description="Confirm and submit"></el-step>
+    <el-steps
+      :active="active"
+      finish-status="success"
+      style="margin: 10px 50px 50px 50px"
+    >
+      <el-step title="Step 1"></el-step>
+      <el-step title="Step 2"></el-step>
+      <el-step title="Step 3"></el-step>
     </el-steps>
     <el-form ref="form" :model="form" label-width="120px" v-if="active === 0">
       <el-form-item label="Fullname">
-        <el-input value="Hoa Pham" disabled=""></el-input>
+        <el-input
+          v-model="fullName"
+          value="Phạm Ngọc Hòa"
+          disabled=""
+        ></el-input>
       </el-form-item>
       <el-form-item label="Department">
-        <el-input value="IT Department" disabled=""></el-input>
+        <el-input
+          v-model="department"
+          value="IT Department"
+          disabled=""
+        ></el-input>
       </el-form-item>
       <el-form-item label="Position">
-        <el-input value="IT Helpdesk Assistance" disabled=""></el-input>
+        <el-input
+          v-model="position"
+          value="IT Helpdesk Assistance"
+          disabled=""
+        ></el-input>
       </el-form-item>
       <el-form-item label="Request Date">
-        <el-date-picker type="date" placeholder="Pick a date" v-model="form.date" style="width: 100%;"></el-date-picker>
+        <el-date-picker
+          type="date"
+          placeholder="Pick a date"
+          v-model="date"
+          style="width: 100%;"
+        ></el-date-picker>
       </el-form-item>
       <el-form-item label="Reason">
-        <el-input type="textarea" v-model="form.reason"></el-input>
+        <el-input v-model="reason" type="textarea"></el-input>
       </el-form-item>
     </el-form>
-    <create-task v-if="active === 1"/>
-    <div v-if="active === 2">
-      <el-alert
-        style="width: 50%; margin: 0 auto;"
-        title="Attention"
-        type="info"
-        description="You need to wait for your boss to approve it so you can work online that day!!!"
-        show-icon>
-      </el-alert>
-      <el-container>
-        <el-button type="success" style="margin: 15px auto 0 auto;">Submit</el-button>
-      </el-container>
-    </div>
-    <el-container v-if="active !== 2">
-      <el-button type="info" @click="next" style="margin: 0 auto;">Next step</el-button>
+    <create-task v-if="active === 1" />
+    <el-container>
+      <el-button style="margin: 12px auto;" @click="next" type="primary" plain>
+        Next step
+      </el-button>
     </el-container>
   </div>
 </template>
 
 <script>
-import CreateTask from './components/CreateTask'
-  export default {
-    components: {
-      CreateTask
-    },
-    data() {
-      return {
-        active: 0,
-        form: {
-          date: '',
-          reason: ''
-        }
-      }
-    },
-    methods: {
-      next() {
-        if (this.active++ > 2) this.active = 0;
-      }
+import CreateTask from "./components/CreateTask";
+import { postRequest } from "@/api/request";
+export default {
+  components: {
+    CreateTask
+  },
+  data() {
+    return {
+      active: 0,
+      fullName: "",
+      department: "",
+      date: "",
+      position: "",
+      reason: ""
+    };
+  },
+  methods: {
+    next() {
+      if (this.active++ > 2) this.active = 0;
+      const newRequest = Object.assign(
+        newRequest,
+        this.fullName,
+        this.department,
+        this.date,
+        this.position,
+        this.reason
+      );
+      postRequest(newRequest);
     }
   }
+};
 </script>
