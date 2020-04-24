@@ -18,18 +18,12 @@
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img src="https://avatars3.githubusercontent.com/u/29374426?s=460&u=94e43b7bb559b7c1ccae04de24374d105ed1ca6b&v=4" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
-            <el-dropdown-item>Profile</el-dropdown-item>
-          </router-link>
-          <router-link to="/">
-            <el-dropdown-item>Dashboard</el-dropdown-item>
-          </router-link>
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
+            <span>Log Out</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

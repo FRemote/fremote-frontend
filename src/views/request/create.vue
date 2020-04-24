@@ -7,7 +7,7 @@
     </el-steps>
     <el-form ref="form" :model="form" label-width="120px" v-if="active === 0">
       <el-form-item label="Fullname">
-        <el-input value="Phạm Ngọc Hòa" disabled=""></el-input>
+        <el-input value="Hoa Pham" disabled=""></el-input>
       </el-form-item>
       <el-form-item label="Department">
         <el-input value="IT Department" disabled=""></el-input>

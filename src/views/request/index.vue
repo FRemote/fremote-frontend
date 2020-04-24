@@ -33,7 +33,6 @@ import Checkin from './components/Checkin'
 import Comment from './components/Comment'
 
 export default {
-  name: 'Profile',
   components: { UserCard, RequestDetail, Checkin, Comment },
   data() {
     return {
@@ -54,10 +53,10 @@ export default {
   methods: {
     getUser() {
       this.user = {
-        name: 'Phạm Ngọc Hòa',
+        name: 'Hoa Pham',
         role: 'IT Department',
         email: 'thaycacac@gmail.com',
-        avatar: 'https://lh3.googleusercontent.com/proxy/cHWXvZbjjtJbcQzDl_hOIbIABgc5AALO0IGrXlJpsUJZKhVw2Tq2CYOoo6jNyuejtAJHGqaQkV8-nkydOCfovy8Lcg5oUrB17R7_fa-xFVrYtGE'
+        avatar: 'https://scontent-hkt1-1.xx.fbcdn.net/v/t1.0-9/p960x960/92497429_1240585112803862_5104665409794080768_o.jpg?_nc_cat=107&_nc_sid=7aed08&_nc_ohc=x54zD0gzShwAX89BkIY&_nc_ht=scontent-hkt1-1.xx&_nc_tp=6&oh=7235ad8ae6bd2c1c913b539bb2685739&oe=5EC7A585'
       }
     }
   }
