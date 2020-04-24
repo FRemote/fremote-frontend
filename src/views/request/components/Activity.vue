@@ -7,7 +7,8 @@
         </el-col>
         <el-col :span="21">
           <el-date-picker
-            v-model="value1"
+            disabled
+            v-model="value"
             type="date"
             placeholder="Pick a day">
           </el-date-picker>
@@ -30,127 +31,86 @@
       </el-row>
     </div>
     <div class="post">
-      <div class="user-block">
-        <img class="img-circle" :src="'https://wpimg.wallstcn.com/9e2a5d0a-bd5b-457f-ac8e-86554616c87b.jpg'+avatarPrefix">
-        <span class="username text-muted">Captain American</span>
-        <span class="description">Sent you a message - yesterday</span>
+      <h3 style="text-align: center;">Todo List</h3>
+      <div class="components-container board">
+        <Kanban :key="1" :list="list1" :group="group" class="kanban todo" header-text="Todo" />
+        <Kanban :key="2" :list="list2" :group="group" class="kanban working" header-text="Working" />
+        <Kanban :key="3" :list="list3" :group="group" class="kanban done" header-text="Done" />
       </div>
-      <p>
-        Lorem ipsum represents a long-held tradition for designers,
-        typographers and the like. Some people hate it and argue for
-        its demise, but others ignore the hate as they create awesome
-        tools to help create filler text for everyone from bacon lovers
-        to Charlie Sheen fans.
-      </p>
-      <ul class="list-inline">
-        <li>
-          <span class="link-black text-sm">
-            <i class="el-icon-share" />
-            Share
-          </span>
-        </li>
-        <li>
-          <span class="link-black text-sm">
-            <svg-icon icon-class="like" />
-            Like
-          </span>
-        </li>
-      </ul>
+    </div>
+    <div class="post">
+      <h3 style="text-align: center;">Result</h3>
+      <div style="text-align: center;">
+        <el-button type="success" icon="el-icon-check">Accept</el-button>
+        <el-button type="danger" icon="el-icon-delete">Reject</el-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-const avatarPrefix = '?imageView2/1/w/80/h/80'
-const carouselPrefix = '?imageView2/2/h/440'
+import Kanban from '@/components/Kanban'
 
 export default {
   data() {
     return {
-      avatarPrefix,
-      carouselPrefix
+      value: new Date(),
+      group: 'mission',
+      list1: [
+        { name: 'Mission', id: 1 },
+        { name: 'Mission', id: 2 },
+        { name: 'Mission', id: 3 },
+        { name: 'Mission', id: 4 }
+      ],
+      list2: [
+        { name: 'Mission', id: 5 },
+        { name: 'Mission', id: 6 },
+        { name: 'Mission', id: 7 }
+      ],
+      list3: [
+        { name: 'Mission', id: 8 },
+        { name: 'Mission', id: 9 },
+        { name: 'Mission', id: 10 }
+      ]
     }
+  },
+  components: {
+    Kanban
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.board {
+  width: 900px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 0 0 25px 0;
+}
+.kanban {
+  &.todo {
+    .board-column-header {
+      background: #4A9FF9;
+    }
+  }
+  &.working {
+    .board-column-header {
+      background: #f9944a;
+    }
+  }
+  &.done {
+    .board-column-header {
+      background: #2ac06d;
+    }
+  }
+}
 .create-date {
   float: right;
 }
 .label {
   color: #000;
-}
-.user-activity {
-  .user-block {
-    .username,
-    .description {
-      display: block;
-      margin-left: 50px;
-      padding: 2px 0;
-    }
-
-    .username{
-      font-size: 16px;
-      color: #000;
-    }
-
-    :after {
-      clear: both;
-    }
-
-    .img-circle {
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      float: left;
-    }
-
-    span {
-      font-weight: 500;
-      font-size: 12px;
-    }
-  }
-
-  .post {
-    font-size: 14px;
-    border-bottom: 1px solid #d2d6de;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    color: #666;
-
-    .image {
-      width: 100%;
-      height: 100%;
-
-    }
-
-    .user-images {
-      padding-top: 20px;
-    }
-  }
-
-  .list-inline {
-    padding-left: 0;
-    margin-left: -5px;
-    list-style: none;
-
-    li {
-      display: inline-block;
-      padding-right: 5px;
-      padding-left: 5px;
-      font-size: 13px;
-    }
-
-    .link-black {
-
-      &:hover,
-      &:focus {
-        color: #999;
-      }
-    }
-  }
-
 }
 
 .box-center {

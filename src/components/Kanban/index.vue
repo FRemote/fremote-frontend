@@ -53,7 +53,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .board-column {
-  min-width: 300px;
+  min-width: 280px;
   min-height: 100px;
   height: auto;
   overflow: hidden;
