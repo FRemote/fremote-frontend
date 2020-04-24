@@ -14,6 +14,15 @@
         to Charlie Sheen fans.
       </p>
     </div>
+    <div class="post">
+      <el-input
+        type="textarea"
+        :rows="2"
+        placeholder="Please input text comment"
+        v-model="textarea">
+      </el-input>
+      <el-button style="margin-top: 5px;">Comment</el-button>
+    </div>
   </div>
 </template>
 
