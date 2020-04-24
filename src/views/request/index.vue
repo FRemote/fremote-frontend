@@ -11,7 +11,7 @@
               <el-tab-pane label="Request detail" name="activity">
                 <request-detail />
               </el-tab-pane>
-              <el-tab-pane label="Check-in" name="timeline">
+              <el-tab-pane label="Time need check-in" name="timeline">
                 <checkin />
               </el-tab-pane>
               <el-tab-pane label="Comment" name="account">

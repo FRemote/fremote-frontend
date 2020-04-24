@@ -93,7 +93,7 @@
       </el-table-column> 
     </el-table>
     <el-container>
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
+      <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" style="margin: 0 auto;" />
     </el-container>
   </div>
 </template>
