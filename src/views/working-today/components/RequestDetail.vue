@@ -1,22 +1,6 @@
 <template>
   <div class="user-activity">
     <div class="post">
-      <el-row :gutter="20">
-        <el-col :span="3" style="padding-top: 3px">
-          <span class="label">Request Date:</span>
-        </el-col>
-        <el-col :span="21">
-          <el-date-picker
-            disabled
-            v-model="value"
-            type="date"
-            placeholder="Pick a day">
-          </el-date-picker>
-          <span class="create-date">Create Date: 2017-05-28T07:43:32 -07:00</span>
-        </el-col>
-      </el-row>
-    </div>
-    <div class="post">
       <div class="components-container board">
         <Kanban :key="1" :list="list1" :group="group" class="kanban todo" header-text="Todo" />
         <Kanban :key="2" :list="list2" :group="group" class="kanban working" header-text="Working" />
@@ -66,23 +50,6 @@ export default {
   flex-direction: row;
   align-items: flex-start;
   margin: 0 0 25px 0;
-}
-.kanban {
-  &.todo {
-    .board-column-header {
-      background: #4A9FF9;
-    }
-  }
-  &.working {
-    .board-column-header {
-      background: #f9944a;
-    }
-  }
-  &.done {
-    .board-column-header {
-      background: #2ac06d;
-    }
-  }
 }
 .create-date {
   float: right;
