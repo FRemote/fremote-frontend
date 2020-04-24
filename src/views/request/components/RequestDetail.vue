@@ -8,13 +8,13 @@
         <el-col :span="21">
           <el-date-picker
             disabled
-            v-model="value"
+            v-model="requestDetail.requestAt"
             type="date"
             placeholder="Pick a day"
           >
           </el-date-picker>
           <span class="create-date"
-            >Create Date: 2017-05-28T07:43:32 -07:00</span
+            >Create Date: {{ requestDetail.createAt }}</span
           >
         </el-col>
       </el-row>
@@ -24,11 +24,7 @@
         </el-col>
         <el-col :span="21">
           <p>
-            Lorem ipsum represents a long-held tradition for designers,
-            typographers and the like. Some people hate it and argue for its
-            demise, but others ignore the hate as they create awesome tools to
-            help create filler text for everyone from bacon lovers to Charlie
-            Sheen fans.
+            {{ requestDetail.reason }}
           </p>
         </el-col>
       </el-row>
@@ -38,21 +34,21 @@
       <div class="components-container board">
         <Kanban
           :key="1"
-          :list="list1"
+          :list="requestDetail.tasks"
           :group="group"
           class="kanban todo"
           header-text="Todo"
         />
         <Kanban
           :key="2"
-          :list="list2"
+          :list="requestDetail.tasks"
           :group="group"
           class="kanban working"
           header-text="Working"
         />
         <Kanban
           :key="3"
-          :list="list3"
+          :list="requestDetail.tasks"
           :group="group"
           class="kanban done"
           header-text="Done"
@@ -76,33 +72,21 @@ import { getRequestDetail } from "@/api/request";
 export default {
   data() {
     return {
+      requestDetail: {},
       value: new Date(),
-      group: "mission",
-      list1: [
-        { name: "Mission", id: 1 },
-        { name: "Mission", id: 2 },
-        { name: "Mission", id: 3 },
-        { name: "Mission", id: 4 }
-      ],
-      list2: [
-        { name: "Mission", id: 5 },
-        { name: "Mission", id: 6 },
-        { name: "Mission", id: 7 }
-      ],
-      list3: [
-        { name: "Mission", id: 8 },
-        { name: "Mission", id: 9 },
-        { name: "Mission", id: 10 }
-      ]
+      group: "mission"
     };
   },
   components: {
     Kanban
   },
-  async mounted() {
-    const id = this.$router.params.id;
-    console.log(id);
-    const requestDetail = await getRequestDetail();
+  async created() {
+    const id = this.$route.params.id;
+    await fetch(`http://a3e162c5.ngrok.io/back-end/getRequestById?id=${id}`)
+      .then(res => res.json())
+      .then(data => {
+        this.requestDetail = data.data;
+      });
   }
 };
 </script>
