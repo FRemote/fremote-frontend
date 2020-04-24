@@ -85,7 +85,7 @@
       </el-table-column>
 
       <el-table-column label="Actions" align="center" width="100" class-name="small-padding fixed-width">
-        <template slot-scope="{row,$index}">
+        <template slot-scope="{row}">
           <router-link :to="`requests/${row.id}`">
             <el-button type="primary" size="mini">
               View

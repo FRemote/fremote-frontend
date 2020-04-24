@@ -89,19 +89,6 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/icon',
-    component: 'layout/Layout',
-    children: [
-      {
-        path: 'index',
-        component: 'views/icons/index',
-        name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon', noCache: true }
-      }
-    ]
-  },
-
-  {
     path: '/excel',
     component: 'layout/Layout',
     redirect: '/excel/export-excel',
@@ -115,7 +102,7 @@ export const asyncRoutes = [
         path: 'export-excel',
         component: 'views/excel/export-excel',
         name: 'ExportExcel',
-        meta: { title: 'Export Excel' }
+        meta: { title: 'Export Data' }
       }
     ]
   },
