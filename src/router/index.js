@@ -103,8 +103,9 @@ export const asyncRoutes = [
     component: Layout,
     name: "Table",
     meta: {
-      title: "Working today",
-      icon: "peoples"
+      title: 'Working today',
+      icon: 'peoples',
+      roles: ['admin']
     },
     children: [
       {
@@ -129,11 +130,28 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: "/permission",
+    path: '/create-request',
     component: Layout,
-    redirect: "/permission/page",
-    alwaysShow: true,
-    name: "Permission",
+    name: 'Table',
+    meta: {
+      title: 'Create request',
+      icon: 'documentation'
+    },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/request/create'),
+        name: 'Working today',
+        meta: { title: 'Create request' }
+      }
+    ]
+  },
+  {
+    path: '/permission',
+    component: Layout,
+    redirect: '/permission/page',
+    hidden: true,
+    name: 'Permission',
     meta: {
       title: "Permission",
       icon: "lock",
