@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Layout from '@/layout'
-import componentsRouter from './modules/components'
 
 export const constantRoutes = [
   {
@@ -168,8 +167,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
-  componentsRouter,
 
   {
     path: '/excel',

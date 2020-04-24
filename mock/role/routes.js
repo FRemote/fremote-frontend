@@ -102,31 +102,6 @@ export const asyncRoutes = [
   },
 
   {
-    path: '/components',
-    component: 'layout/Layout',
-    redirect: 'noRedirect',
-    name: 'ComponentDemo',
-    meta: {
-      title: 'Components',
-      icon: 'component'
-    },
-    children: [
-      {
-        path: 'drag-dialog',
-        component: 'views/components-demo/drag-dialog',
-        name: 'DragDialogDemo',
-        meta: { title: 'Drag Dialog' }
-      },
-      {
-        path: 'drag-kanban',
-        component: 'views/components-demo/drag-kanban',
-        name: 'DragKanbanDemo',
-        meta: { title: 'Drag Kanban' }
-      }
-    ]
-  },
-
-  {
     path: '/excel',
     component: 'layout/Layout',
     redirect: '/excel/export-excel',
