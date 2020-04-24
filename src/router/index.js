@@ -130,9 +130,25 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: "/today",
+    component: Layout,
+    meta: {
+      title: 'Today',
+      icon: 'peoples',
+      roles: ['admin']
+    },
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/today"),
+        name: "Working today",
+        meta: { title: "Today" }
+      }
+    ]
+  },
+  {
     path: '/create-request',
     component: Layout,
-    name: 'Table',
     meta: {
       title: 'Create request',
       icon: 'documentation',
