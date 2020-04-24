@@ -2,7 +2,7 @@
   <div>
     <aside>
       You have 5 request today
-      <router-link to="/abcde">Click here</router-link>
+      <button>Click here</button>
     </aside>
     <div class="dashboard-editor-container">
       <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
