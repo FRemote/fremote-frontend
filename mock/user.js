@@ -70,7 +70,6 @@ export default [
     }
   },
 
-  // user logout
   {
     url: '/vue-element-admin/user/logout',
     type: 'post',
