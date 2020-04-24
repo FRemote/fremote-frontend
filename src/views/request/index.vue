@@ -11,10 +11,10 @@
               <el-tab-pane label="Detail" name="activity">
                 <activity />
               </el-tab-pane>
-              <el-tab-pane label="Timeline" name="timeline">
+              <el-tab-pane label="Check-in" name="timeline">
                 <timeline />
               </el-tab-pane>
-              <el-tab-pane label="Account" name="account">
+              <el-tab-pane label="Comment" name="account">
                 <account :user="user" />
               </el-tab-pane>
             </el-tabs>
