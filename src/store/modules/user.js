@@ -56,7 +56,6 @@ const actions = {
 
         const { roles, name, avatar, introduction } = data
 
-        // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
           reject('getInfo: roles must be a non-null array!')
         }
@@ -72,7 +71,6 @@ const actions = {
     })
   },
 
-  // user logout
   logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
@@ -89,7 +87,6 @@ const actions = {
     })
   },
 
-  // remove token
   resetToken({ commit }) {
     return new Promise(resolve => {
       commit('SET_TOKEN', '')
@@ -99,7 +96,6 @@ const actions = {
     })
   },
 
-  // dynamically modify permissions
   changeRoles({ commit, dispatch }, role) {
     return new Promise(async resolve => {
       const token = role + '-token'
@@ -111,13 +107,10 @@ const actions = {
 
       resetRouter()
 
-      // generate accessible routes map based on roles
       const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
 
-      // dynamically add accessible routes
       router.addRoutes(accessRoutes)
 
-      // reset visited views and cached views
       dispatch('tagsView/delAllViews', null, { root: true })
 
       resolve()
