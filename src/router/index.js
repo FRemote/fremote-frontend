@@ -120,7 +120,8 @@ export const asyncRoutes = [
     name: 'Table',
     meta: {
       title: 'Create request',
-      icon: 'documentation'
+      icon: 'documentation',
+      roles: ['editor']
     },
     children: [
       {
