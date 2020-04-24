@@ -104,6 +104,7 @@ import waves from '@/directive/waves'
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination'
 import thaycacac from './data'
+import { getListRequest } from '@/api/request'
 
 const calendarTypeOptions = [
   { key: 'IT', display_name: 'IT Department' },
@@ -147,7 +148,9 @@ export default {
       downloadLoading: false
     }
   },
-  created() {
+  async mounted() {
+    const data = await getListRequest()
+    console.log(data);
     // this.getList()
     this.total = 20
     console.log(thaycacac)
