@@ -14,15 +14,29 @@
         </template>
       </el-table-column>
 
-      <el-table-column width="300px" align="center" label="Date">
+      <el-table-column width="200px" align="center" label="Author">
         <template slot-scope="{ row }">
-          <span>{{ row.updateAt }}</span>
+          <span>{{ row.name }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="150px" align="center" label="Author">
+      <el-table-column width="300px" align="center" label="Department">
         <template slot-scope="{ row }">
-          <span>{{ row.name }}</span>
+          <span>{{ row.department }}</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column class-name="status-col" label="Status" width="150">
+        <template slot-scope="{ row }">
+          <el-tag :type="row.status | statusFilter">
+            {{ row.status }}
+          </el-tag>
+        </template>
+      </el-table-column>
+
+      <el-table-column width="300px" align="center" label="Date">
+        <template slot-scope="{ row }">
+          <span>{{ row.updateAt }}</span>
         </template>
       </el-table-column>
 
@@ -37,35 +51,9 @@
         </template>
       </el-table-column> -->
 
-      <el-table-column class-name="status-col" label="Status" width="110">
-        <template slot-scope="{ row }">
-          <el-tag :type="row.status | statusFilter">
-            {{ row.status }}
-          </el-tag>
-        </template>
-      </el-table-column>
-
-      <el-table-column class-name="status-col" label="Processing" width="110">
+      <el-table-column class-name="status-col" label="Processing" min-width="110">
         <template slot-scope="{ row }">
           {{ row.done + "/" + row.total }}
-        </template>
-      </el-table-column>
-
-      <el-table-column min-width="300px" label="Department">
-        <template slot-scope="{ row }">
-          <template v-if="row.edit">
-            <el-input v-model="row.title" class="edit-input" size="small" />
-            <el-button
-              class="cancel-btn"
-              size="small"
-              icon="el-icon-refresh"
-              type="warning"
-              @click="cancelEdit(row)"
-            >
-              cancel
-            </el-button>
-          </template>
-          <span v-else>{{ row.department }}</span>
         </template>
       </el-table-column>
 
