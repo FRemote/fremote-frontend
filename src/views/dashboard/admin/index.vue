@@ -2,7 +2,7 @@
   <div>
     <aside>
       You have 5 request today
-      <button>Click here</button>
+      <button @click="push">Click here</button>
     </aside>
     <div class="dashboard-editor-container">
       <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
@@ -36,6 +36,7 @@ import LineChart from './components/LineChart'
 import RaddarChart from './components/RaddarChart'
 import PieChart from './components/PieChart'
 import BarChart from './components/BarChart'
+import Push from 'push.js'
 
 const lineChartData = {
   newVisitis: {
@@ -64,6 +65,19 @@ export default {
     RaddarChart,
     PieChart,
     BarChart
+  },
+  methods: {
+    push() {
+      Push.create("FWork", {
+        body: "You need checkin at 14:00PM",
+        icon: '/icon.png',
+        timeout: 4000,
+        onClick: function () {
+            window.focus();
+            this.close();
+        }
+    });
+    }
   }
 }
 </script>
