@@ -36,7 +36,6 @@ import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import Screenfull from '@/components/Screenfull'
-import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
 
 export default {
@@ -44,7 +43,6 @@ export default {
     Breadcrumb,
     Hamburger,
     Screenfull,
-    SizeSelect,
     Search
   },
   computed: {
