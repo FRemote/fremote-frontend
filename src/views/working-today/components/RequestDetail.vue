@@ -17,18 +17,10 @@
       </el-row>
     </div>
     <div class="post">
-      <h3 style="text-align: center;">Todo List</h3>
       <div class="components-container board">
         <Kanban :key="1" :list="list1" :group="group" class="kanban todo" header-text="Todo" />
         <Kanban :key="2" :list="list2" :group="group" class="kanban working" header-text="Working" />
         <Kanban :key="3" :list="list3" :group="group" class="kanban done" header-text="Done" />
-      </div>
-    </div>
-    <div class="post">
-      <h3 style="text-align: center;">Result</h3>
-      <div style="text-align: center;">
-        <el-button type="success" icon="el-icon-check">Accept</el-button>
-        <el-button type="danger" icon="el-icon-delete">Reject</el-button>
       </div>
     </div>
   </div>

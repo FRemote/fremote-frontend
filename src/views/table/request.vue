@@ -100,7 +100,7 @@
 
 <script>
 import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
-import waves from '@/directive/waves' // waves directive
+import waves from '@/directive/waves'
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination'
 import thaycacac from './data'
@@ -149,7 +149,7 @@ export default {
   },
   created() {
     // this.getList()
-    this.total = 100
+    this.total = 20
     console.log(thaycacac)
     this.list = thaycacac // .filter(item => item.isAccept === false)
     this.listLoading = false

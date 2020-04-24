@@ -15,7 +15,7 @@ export default [
     status: false,
     updateAt: "2017-10-27T07:55:16 -07:00",
     total: 10,
-    done: 3
+    done: 6
   },
   {
     id: 1,
@@ -33,7 +33,7 @@ export default [
     status: "working",
     updateAt: "2018-04-10T11:06:09 -07:00",
     total: 20,
-    done: 3
+    done: 18
   },
   {
     id: 5,

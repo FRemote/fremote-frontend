@@ -8,7 +8,7 @@
         <el-col :span="18" :xs="24">
           <el-card>
             <el-tabs v-model="activeTab">
-              <el-tab-pane label="Request detail" name="activity">
+              <el-tab-pane label="Activities" name="activity">
                 <request-detail />
               </el-tab-pane>
               <el-tab-pane label="Check-in" name="timeline">
