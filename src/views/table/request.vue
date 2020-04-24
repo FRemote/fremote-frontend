@@ -209,17 +209,15 @@ export default {
     };
   },
   async mounted() {
-    // await fetch(
-    //   `http://a3e162c5.ngrok.io/back-end/requests?currPage=1&pageSize=10`
-    // )
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.list = data.data;
-    //   });
-    // this.total = 20;
-    // // this.list = data;
-    // this.listLoading = false;
-    this.list = thaycacac
+    await fetch(
+      `http://a3e162c5.ngrok.io/back-end/requests?currPage=1&pageSize=10`
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.list = data.data;
+      });
+    this.total = 20;
+    // this.list = data;
     this.listLoading = false;
   },
   methods: {
