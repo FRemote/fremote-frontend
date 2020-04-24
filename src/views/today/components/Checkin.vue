@@ -15,14 +15,12 @@
       </el-timeline-item>
     </el-timeline>
     <el-dialog
+      top="3vh"
       title="Check-in"
       :visible.sync="dialogVisible"
       width="70%"
     >
       <checkin-screenshot />
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-      </span>
     </el-dialog>
   </div>
 </template>
@@ -75,3 +73,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.el-dialog__body {
+  padding: 0 20px;
+}
+</style>
