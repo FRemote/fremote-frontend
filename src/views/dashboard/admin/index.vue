@@ -1,8 +1,9 @@
 <template>
   <div>
     <aside>
-      You have 5 request today
-      <button @click="push">Click here</button>
+      You have 10 request today
+      <router-link to="/request">Click here</router-link>
+      <!-- <el-button @click="push">Click here</el-button > -->
     </aside>
     <div class="dashboard-editor-container">
       <el-row :gutter="32">

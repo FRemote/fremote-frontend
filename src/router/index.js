@@ -55,7 +55,7 @@ export const asyncRoutes = [
   {
     path: "/requests",
     component: Layout,
-    name: "Request",
+    name: "Requests",
     meta: {
       title: "Request work from home",
       icon: "guide",
@@ -65,7 +65,7 @@ export const asyncRoutes = [
       {
         path: "",
         component: () => import("@/views/table/request"),
-        name: "Request",
+        name: "Requests",
         meta: { title: "Request" }
       }
     ]
