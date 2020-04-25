@@ -1,21 +1,16 @@
 <template>
   <div class="drawer-container">
     <div>
-      <h3 class="drawer-title">Page style setting</h3>
+      <h3 class="drawer-title">Setting time work</h3>
 
       <div class="drawer-item">
-        <span>Open Tags-View</span>
-        <el-switch v-model="tagsView" class="drawer-switch" />
+        <span>Morning</span>
+        <el-input placeholder="Please input" value="8 - 12" ></el-input>
       </div>
 
       <div class="drawer-item">
-        <span>Fixed Header</span>
-        <el-switch v-model="fixedHeader" class="drawer-switch" />
-      </div>
-
-      <div class="drawer-item">
-        <span>Sidebar Logo</span>
-        <el-switch v-model="sidebarLogo" class="drawer-switch" />
+        <span>Afternoon</span>
+        <el-input placeholder="Please input" value="14 - 18"></el-input>
       </div>
 
     </div>

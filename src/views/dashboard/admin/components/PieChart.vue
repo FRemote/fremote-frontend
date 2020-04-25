@@ -20,7 +20,7 @@ export default {
     },
     height: {
       type: String,
-      default: '300px'
+      default: '470px'
     }
   },
   data() {
@@ -52,7 +52,7 @@ export default {
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['Industries', 'Technology', 'Forex', 'Gold', 'Forecasts']
+          data: ['Communication & Scheduling', 'Email', 'Reference & Learning', 'Uncategorized', 'Entertainment']
         },
         series: [
           {
@@ -62,11 +62,11 @@ export default {
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 320, name: 'Industries' },
-              { value: 240, name: 'Technology' },
-              { value: 149, name: 'Forex' },
-              { value: 100, name: 'Gold' },
-              { value: 59, name: 'Forecasts' }
+              { value: 320, name: 'Communication & Scheduling' },
+              { value: 240, name: 'Email' },
+              { value: 149, name: 'Reference & Learning' },
+              { value: 100, name: 'Uncategorized' },
+              { value: 59, name: 'Entertainment' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600

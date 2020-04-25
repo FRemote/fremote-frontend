@@ -62,6 +62,7 @@ import CreateTask from "./components/CreateTask";
 import FormDialog from "./components/FormDialog";
 import { postRequest } from "@/api/request";
 import requestAxios from "@/utils/fhack";
+import axios from 'axios'
 export default {
   components: {
     FormDialog,
@@ -86,40 +87,47 @@ export default {
     };
   },
   methods: {
-    async next() {
-      if (this.active === 0) {
-        const newRequest = {
-          employeeId: 100001,
-          reason: this.form.reason,
-          requestAt: "2019-10-05T09:36:30 -07:00",
-          timeRemind: 2,
-          tasks: [
-            {
-              title: "Init task",
-              description: "init task"
-            }
-          ]
-        };
-        // await requestAxios({
-        //   url: "https://db5362ae.ngrok.io/back-end/createRequest",
-        //   method: "POST",
-        //   newRequest
-        // }).then(res => res);
-        await fetch("https://db5362ae.ngrok.io/back-end/createRequest", {
-          method: "POST",
-          // mode: "cors",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(newRequest)
-        })
-          .then(res => res.json())
-          .then(data => {
-            this.requestID = data.data.id;
-          })
-          .catch(err => console.log(err));
-      }
-      if (this.active++ > 2) this.active = 0;
+    next() {
+      axios.get('https://4fe5cc24.ngrok.io/back-end/requests?currPage=1&pageSize=10')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      // if (this.active === 0) {
+      //   const newRequest = {
+      //     employeeId: 100001,
+      //     reason: this.form.reason,
+      //     requestAt: "2019-10-05T09:36:30 -07:00",
+      //     timeRemind: 2,
+      //     tasks: [
+      //       {
+      //         title: "Init task",
+      //         description: "init task"
+      //       }
+      //     ]
+      //   };
+      //   // await requestAxios({
+      //   //   url: "https://db5362ae.ngrok.io/back-end/createRequest",
+      //   //   method: "POST",
+      //   //   newRequest
+      //   // }).then(res => res);
+      //   await fetch("https://db5362ae.ngrok.io/back-end/createRequest", {
+      //     method: "POST",
+      //     // mode: "cors",
+      //     headers: {
+      //       "Content-Type": "application/json"
+      //     },
+      //     body: JSON.stringify(newRequest)
+      //   })
+      //     .then(res => res.json())
+      //     .then(data => {
+      //       this.requestID = data.data.id;
+      //     })
+      //     .catch(err => console.log(err));
+      // }
+      // if (this.active++ > 2) this.active = 0;
     },
 
     async createTaskClick(value) {
