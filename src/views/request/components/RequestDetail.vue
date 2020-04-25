@@ -82,7 +82,7 @@ export default {
   },
   async created() {
     const id = this.$route.params.id;
-    await fetch(`http://a3e162c5.ngrok.io/back-end/getRequestById?id=${id}`)
+    await fetch(`https://db5362ae.ngrok.io/back-end/getRequestById?id=${id}`)
       .then(res => res.json())
       .then(data => {
         this.requestDetail = data.data;

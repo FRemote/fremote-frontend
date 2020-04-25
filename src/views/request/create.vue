@@ -61,7 +61,7 @@ import Kanban from "@/components/Kanban";
 import CreateTask from "./components/CreateTask";
 import FormDialog from "./components/FormDialog";
 import { postRequest } from "@/api/request";
-
+import requestAxios from "@/utils/fhack";
 export default {
   components: {
     FormDialog,
@@ -93,11 +93,21 @@ export default {
           reason: this.form.reason,
           requestAt: "2019-10-05T09:36:30 -07:00",
           timeRemind: 2,
-          tasks: []
+          tasks: [
+            {
+              title: "Init task",
+              description: "init task"
+            }
+          ]
         };
-        await fetch("http://a3e162c5.ngrok.io/back-end/createRequest", {
+        // await requestAxios({
+        //   url: "https://db5362ae.ngrok.io/back-end/createRequest",
+        //   method: "POST",
+        //   newRequest
+        // }).then(res => res);
+        await fetch("https://db5362ae.ngrok.io/back-end/createRequest", {
           method: "POST",
-          mode: "cors",
+          // mode: "cors",
           headers: {
             "Content-Type": "application/json"
           },
@@ -118,7 +128,7 @@ export default {
       this.newTaks.tasks.push(value);
       value.requestId = this.requestID;
       value.status = "todo";
-      await fetch("http://a3e162c5.ngrok.io/back-end/addTask", {
+      await fetch("https://db5362ae.ngrok.io/back-end/addTask", {
         method: "POST",
         mode: "cors",
         headers: {

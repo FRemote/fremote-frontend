@@ -100,7 +100,7 @@ export default {
   async created() {
     this.listLoading = true;
     await fetch(
-      "http://a3e162c5.ngrok.io/back-end/working-today?currPage=1&pageSize=10"
+      "https://db5362ae.ngrok.io/back-end/working-today?currPage=1&pageSize=10"
     )
       .then(res => res.json())
       .then(data => {
