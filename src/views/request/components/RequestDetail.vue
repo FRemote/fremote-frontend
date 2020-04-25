@@ -8,13 +8,13 @@
         <el-col :span="21">
           <el-date-picker
             disabled
-            v-model="requestDetail.requestAt"
+            v-model="value"
             type="date"
             placeholder="Pick a day"
           >
           </el-date-picker>
           <span class="create-date"
-            >Create Date: {{ requestDetail.createAt }}</span
+            >Create Date: Apr 24, 2020</span
           >
         </el-col>
       </el-row>
@@ -24,7 +24,7 @@
         </el-col>
         <el-col :span="21">
           <p>
-            {{ requestDetail.reason }}
+            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
           </p>
         </el-col>
       </el-row>
@@ -41,14 +41,14 @@
         />
         <Kanban
           :key="2"
-          :list="requestDetail.tasks"
+          :list="[]"
           :group="group"
           class="kanban working"
           header-text="Working"
         />
         <Kanban
           :key="3"
-          :list="requestDetail.tasks"
+          :list="[]"
           :group="group"
           class="kanban done"
           header-text="Done"
@@ -58,7 +58,7 @@
     <div class="post">
       <h3 style="text-align: center;">Result</h3>
       <div style="text-align: center;">
-        <el-button type="success" icon="el-icon-check">Accept</el-button>
+        <el-button type="success" icon="el-icon-check" @click="accept">Accept</el-button>
         <el-button type="danger" icon="el-icon-delete">Reject</el-button>
       </div>
     </div>
@@ -75,7 +75,7 @@ export default {
     return {
       baseUrl,
       requestDetail: {},
-      value: new Date(),
+      value: new Date() + 1,
       group: "mission"
     };
   },
@@ -89,6 +89,14 @@ export default {
       .then(data => {
         this.requestDetail = data.data;
       });
+  },
+  methods: {
+    accept() {
+      this.$message({
+        message: 'You accept Truong Jackie working remote.',
+        type: 'success'
+      });
+    }
   }
 };
 </script>

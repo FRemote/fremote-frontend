@@ -1,7 +1,6 @@
 <template>
   <div>
     <div align="bet" style="margin-bottom: 5px">
-      <span>{{ date }}</span>
       <el-button
         id="magic"
         v-on:click="magic"

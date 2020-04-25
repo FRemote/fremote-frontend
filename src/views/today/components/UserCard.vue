@@ -22,7 +22,7 @@
         <div class="user-bio-section-header"><svg-icon icon-class="education" /><span>Position</span></div>
         <div class="user-bio-section-body">
           <div class="text-muted">
-            IT Help Desk Assistance
+            Frontend Developer
           </div>
         </div>
       </div>

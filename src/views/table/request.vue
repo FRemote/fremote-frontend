@@ -97,7 +97,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="Position" width="110px" align="center">
+      <el-table-column label="Position" width="190px" align="center">
         <template slot-scope="{ row }">
           <span>{{ row.possition }}</span>
         </template>
@@ -106,14 +106,12 @@
       <el-table-column label="Created at" width="200px" align="center">
         <template slot-scope="{ row }">
           <span>{{ row.createAt }}</span>
-          <!-- | parseTime('{y}-{m}-{d} {h}:{i}') -->
         </template>
       </el-table-column>
 
       <el-table-column label="Request at" width="200px" align="center">
         <template slot-scope="{ row }">
           <span>{{ row.requestAt }}</span>
-          <!-- | parseTime('{y}-{m}-{d} {h}:{i}') -->
         </template>
       </el-table-column>
 
@@ -182,7 +180,7 @@ export default {
   directives: { waves },
   filters: {
     statusFilter(status) {
-      return status === true ? "allow" : "not allow";
+      return status === true ? "allow" : "pending...";
     }
   },
   data() {

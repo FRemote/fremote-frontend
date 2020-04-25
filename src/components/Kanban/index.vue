@@ -22,6 +22,8 @@
           </div>
         </div>
       </div>
+      <el-button v-if="headerText === 'Todo'" icon="el-icon-edit" style="margin-top: 7px; width: 100%;">Add new task</el-button>
+      
       <!-- </transition-group> -->
     </draggable>
   </div>
