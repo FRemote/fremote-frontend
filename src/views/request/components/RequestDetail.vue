@@ -66,12 +66,14 @@
 </template>
 
 <script>
+import baseUrl from '@/utils/config'
 import Kanban from "@/components/Kanban";
 import { getRequestDetail } from "@/api/request";
 
 export default {
   data() {
     return {
+      baseUrl,
       requestDetail: {},
       value: new Date(),
       group: "mission"
@@ -82,7 +84,7 @@ export default {
   },
   async created() {
     const id = this.$route.params.id;
-    await fetch(`https://db5362ae.ngrok.io/back-end/getRequestById?id=${id}`)
+    await fetch(`${baseUrl}/getRequestById?id=${id}`)
       .then(res => res.json())
       .then(data => {
         this.requestDetail = data.data;

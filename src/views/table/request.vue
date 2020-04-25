@@ -163,6 +163,7 @@ import {
 import waves from "@/directive/waves";
 import { parseTime } from "@/utils";
 import Pagination from "@/components/Pagination";
+import baseUrl from '@/utils/config'
 
 const calendarTypeOptions = [
   { key: "IT", display_name: "IT Department" },
@@ -177,7 +178,6 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
 }, {});
 
 export default {
-  name: "ComplexTable",
   components: { Pagination },
   directives: { waves },
   filters: {
@@ -187,6 +187,7 @@ export default {
   },
   data() {
     return {
+      baseUrl,
       date1: "",
       date2: "",
       showAll: false,
@@ -208,7 +209,7 @@ export default {
   },
   async mounted() {
     await fetch(
-      `https://db5362ae.ngrok.io/back-end/requests?currPage=1&pageSize=10`
+      `${baseUrl}/requests?currPage=1&pageSize=10`
     )
       .then(res => res.json())
       .then(data => {

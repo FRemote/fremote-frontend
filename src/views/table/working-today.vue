@@ -82,10 +82,12 @@
 <script>
 import { fetchList } from "@/api/article";
 import Pagination from "@/components/Pagination";
+import baseUrl from '@/utils/config'
 
 export default {
   data() {
     return {
+      baseUrl,
       list: null,
       listLoading: true,
       listQuery: {
@@ -100,7 +102,7 @@ export default {
   async created() {
     this.listLoading = true;
     await fetch(
-      "https://db5362ae.ngrok.io/back-end/working-today?currPage=1&pageSize=10"
+      "${baseUrl}/working-today?currPage=1&pageSize=10"
     )
       .then(res => res.json())
       .then(data => {
