@@ -16,7 +16,7 @@
 
       <el-table-column width="200px" align="center" label="Employee">
         <template slot-scope="{ row }">
-          <span>{{ row.name }}</span>
+          <span>{{ row.empName }}</span>
         </template>
       </el-table-column>
 
@@ -28,16 +28,27 @@
 
       <el-table-column class-name="status-col" label="Status" width="150">
         <template slot-scope="{ row }">
-          <el-tag :type="row.status ? 'success': 'danger'">
-            {{ row.status === true ? 'Working' : 'Not working' }}
+          <el-tag :type="row.status ? 'success' : 'danger'">
+            {{ row.status === true ? "Working" : "Not working" }}
           </el-tag>
         </template>
       </el-table-column>
 
-      <el-table-column class-name="status-col" label="Processing" min-width="400">
+      <el-table-column
+        class-name="status-col"
+        label="Processing"
+        min-width="400"
+      >
         <template slot-scope="{ row }">
-          <el-progress :text-inside="true" :stroke-width="20" :percentage="parseFloat((row.done / row.total * 100).toFixed(2))" :status="status(row)" />
-          <span>{{ row.done + "/" + row.total }}</span>
+          <el-progress
+            :text-inside="true"
+            :stroke-width="20"
+            :percentage="
+              parseFloat(((row.doneTask / row.totalTask) * 100).toFixed(2))
+            "
+            :status="status(row)"
+          />
+          <span>{{ row.doneTask + "/" + row.totalTask }}</span>
         </template>
       </el-table-column>
 
@@ -56,15 +67,21 @@
       </el-table-column>
     </el-table>
     <el-container>
-      <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" style="margin: 0 auto;" />
+      <pagination
+        v-show="total > 0"
+        :total="total"
+        :page.sync="listQuery.page"
+        :limit.sync="listQuery.limit"
+        @pagination="getList"
+        style="margin: 0 auto;"
+      />
     </el-container>
   </div>
 </template>
 
 <script>
-import { fetchList } from "@/api/article"
-import Pagination from '@/components/Pagination'
-import wtData from "./wt-data";
+import { fetchList } from "@/api/article";
+import Pagination from "@/components/Pagination";
 
 export default {
   data() {
@@ -80,34 +97,33 @@ export default {
   components: {
     Pagination
   },
-  created() {
-    this.getList();
+  async created() {
+    this.listLoading = true;
+    await fetch(
+      "https://db5362ae.ngrok.io/back-end/working-today?currPage=1&pageSize=10"
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data.data);
+        this.list = data.data.map(v => {
+          this.$set(v, "edit", false); // https://vuejs.org/v2/guide/reactivity.html
+          v.originalTitle = v.name; //  will be used when user click the cancel botton
+          return v;
+        });
+      });
+    this.listLoading = false;
   },
   methods: {
-    async getList() {
-      this.listLoading = true;
-      // const { data } = await fetchList(this.listQuery);
-      // console.log(data);
-      // const items = data.items;
-
-      const items = wtData;
-      this.list = items.map(v => {
-        this.$set(v, "edit", false); // https://vuejs.org/v2/guide/reactivity.html
-        v.originalTitle = v.name; //  will be used when user click the cancel botton
-        return v;
-      });
-      this.listLoading = false;
-    },
     status(row) {
-      const percent = (row.done / row.total * 100).toFixed(2)
-      if(percent < 25) {
-        return 'exception'
-      } else if (percent>=25 && percent < 50) {
-        return 'warning'
+      const percent = ((row.doneTask / row.totalTask) * 100).toFixed(2);
+      if (percent < 25) {
+        return "exception";
+      } else if (percent >= 25 && percent < 50) {
+        return "warning";
       } else if (percent >= 50 && percent < 80) {
-        return ''
+        return "";
       } else {
-        return 'success'
+        return "success";
       }
     },
     cancelEdit(row) {

@@ -1,9 +1,8 @@
+import Layout from "@/layout";
 import Vue from "vue";
 import Router from "vue-router";
 
 Vue.use(Router);
-
-import Layout from '@/layout'
 
 export const constantRoutes = [
   {
@@ -60,7 +59,7 @@ export const asyncRoutes = [
     meta: {
       title: "Request work from home",
       icon: "guide",
-      roles: ['admin']
+      roles: ["admin"]
     },
     children: [
       {
@@ -88,9 +87,9 @@ export const asyncRoutes = [
     component: Layout,
     name: "Table",
     meta: {
-      title: 'Working today',
-      icon: 'peoples',
-      roles: ['admin']
+      title: "Working today",
+      icon: "peoples",
+      roles: ["admin"]
     },
     children: [
       {
@@ -118,9 +117,9 @@ export const asyncRoutes = [
     path: "/today",
     component: Layout,
     meta: {
-      title: 'My Today',
-      icon: 'user',
-      roles: ['editor']
+      title: "My Today",
+      icon: "user",
+      roles: ["editor"]
     },
     children: [
       {
@@ -132,25 +131,25 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/create-request',
+    path: "/create-request",
     component: Layout,
     meta: {
-      title: 'Create request',
-      icon: 'documentation',
-      roles: ['editor']
+      title: "Create request",
+      icon: "documentation",
+      roles: ["editor"]
     },
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/request/create'),
-        name: 'Working today',
-        meta: { title: 'Create request' }
+        path: "index",
+        component: () => import("@/views/request/create"),
+        name: "Working today",
+        meta: { title: "Create request" }
       }
     ]
   },
 
   {
-    path: '/excel',
+    path: "/excel",
     component: Layout,
     redirect: "/excel/export-excel",
     name: "Excel",
@@ -160,10 +159,10 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: 'export-excel',
-        component: () => import('@/views/excel/export-excel'),
-        name: 'ExportExcel',
-        meta: { title: 'Export Data' }
+        path: "export-excel",
+        component: () => import("@/views/excel/export-excel"),
+        name: "ExportExcel",
+        meta: { title: "Export Data" }
       }
     ]
   },

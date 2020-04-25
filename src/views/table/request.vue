@@ -99,13 +99,13 @@
 
       <el-table-column label="Position" width="110px" align="center">
         <template slot-scope="{ row }">
-          <span>{{ row.position }}</span>
+          <span>{{ row.possition }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="Created at" width="200px" align="center">
         <template slot-scope="{ row }">
-          <span>{{ row.createdAt }}</span>
+          <span>{{ row.createAt }}</span>
           <!-- | parseTime('{y}-{m}-{d} {h}:{i}') -->
         </template>
       </el-table-column>
@@ -163,8 +163,6 @@ import {
 import waves from "@/directive/waves";
 import { parseTime } from "@/utils";
 import Pagination from "@/components/Pagination";
-import thaycacac from "./data";
-import { getListRequest } from "@/api/request";
 
 const calendarTypeOptions = [
   { key: "IT", display_name: "IT Department" },
@@ -210,14 +208,13 @@ export default {
   },
   async mounted() {
     await fetch(
-      `http://a3e162c5.ngrok.io/back-end/requests?currPage=1&pageSize=10`
+      `https://db5362ae.ngrok.io/back-end/requests?currPage=1&pageSize=10`
     )
       .then(res => res.json())
       .then(data => {
         this.list = data.data;
       });
     this.total = 20;
-    // this.list = data;
     this.listLoading = false;
   },
   methods: {

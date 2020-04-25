@@ -9,45 +9,64 @@
       class="board-column-content"
       :set-data="setData"
     >
-      <div v-for="element in list" :key="element.id" class="board-item">
-        {{ element.name }} {{ element.id }}
+      <!-- <transition-group> -->
+      <div v-for="(element, idx) in list" :key="element.id" class="board-item">
+        <div class="board-item-wrap">
+          <span class="board-item-title"
+            >{{ element.title }} {{ element.id }}</span
+          >
+          <div class="board-item-icon">
+            <i class="el-icon-edit" @click="editTask(idx)"></i>
+            <i class="el-icon-delete" @click="removeTask(idx)"></i>
+            <form-dialog :dialog-form-visible="dialogFormVisible" />
+          </div>
+        </div>
       </div>
+      <!-- </transition-group> -->
     </draggable>
   </div>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+import draggable from "vuedraggable";
+import FormDialog from "./FormDialog";
 
 export default {
-  name: 'DragKanbanDemo',
+  name: "DragKanbanDemo",
   components: {
-    draggable
+    draggable,
+    FormDialog
   },
+  data: () => ({
+    dialogFormVisible: false
+  }),
   props: {
     headerText: {
       type: String,
-      default: 'Header'
+      default: "Header"
     },
     options: {
       type: Object,
       default() {
-        return {}
+        return {};
       }
     },
     list: {
       type: Array,
       default() {
-        return []
+        return [];
       }
     }
   },
   methods: {
     setData(dataTransfer) {
-      dataTransfer.setData('Text', '')
+      dataTransfer.setData("Text", "");
+    },
+    editTask(id) {
+      this.dialogFormVisible = !this.dialogFormVisible;
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .board-column {
@@ -90,8 +109,14 @@ export default {
       padding: 5px 10px;
       box-sizing: border-box;
       box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.2);
+      .board-item-wrap {
+        display: flex;
+        justify-content: space-between;
+        .el-icon-edit {
+          padding-right: 5px;
+        }
+      }
     }
   }
 }
 </style>
-
