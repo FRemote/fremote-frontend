@@ -19,20 +19,20 @@ export default {
       value: new Date(),
       group: 'mission',
       list1: [
-        { name: 'Mission', id: 1 },
-        { name: 'Mission', id: 2 },
-        { name: 'Mission', id: 3 },
-        { name: 'Mission', id: 4 }
+        { name: 'Mission', id: 'Task 1' },
       ],
       list2: [
-        { name: 'Mission', id: 5 },
-        { name: 'Mission', id: 6 },
-        { name: 'Mission', id: 7 }
+        { name: 'Mission', id: 'Task 2' },
+        { name: 'Mission', id: 'Task 3' },
+        { name: 'Mission', id: 'Task 4' }
       ],
       list3: [
-        { name: 'Mission', id: 8 },
-        { name: 'Mission', id: 9 },
-        { name: 'Mission', id: 10 }
+        { name: 'Mission', id: 'Task 5' },
+        { name: 'Mission', id: 'Task 6' },
+        { name: 'Mission', id: 'Task 7' },
+        { name: 'Mission', id: 'Task 8' },
+        { name: 'Mission', id: 'Task 9' },
+        { name: 'Mission', id: 'Task 10' }
       ]
     }
   },

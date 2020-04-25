@@ -7,7 +7,6 @@
     >
       <el-step title="Step 1"></el-step>
       <el-step title="Step 2"></el-step>
-      <el-step title="Step 3"></el-step>
     </el-steps>
     <el-form ref="form" :model="form" label-width="120px" v-if="active === 0">
       <el-form-item label="Fullname">
@@ -45,8 +44,11 @@
     </el-form>
     <create-task v-if="active === 1" />
     <el-container>
-      <el-button style="margin: 12px auto;" @click="next" type="primary" plain>
+      <el-button v-if="active === 0" style="margin: 12px auto;" @click="next" type="primary" plain :disabled="date === '' || reason === ''">
         Next step
+      </el-button>
+      <el-button v-if="active === 1" style="margin: 12px auto;" @click="submit" type="success" plain :icon="!loading ? 'el-icon-check' : 'el-icon-loading'">
+        Submit
       </el-button>
     </el-container>
   </div>
@@ -66,10 +68,23 @@ export default {
       department: "IT Department",
       date: "",
       position: "Frontend Developer",
-      reason: "Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans."
+      reason: "",
+      loading: false
     };
   },
   methods: {
+    submit() {
+      const a = setInterval(() => {
+        this.loading = false
+        this.$message({
+          message: 'Create request successful!!!',
+          type: 'success'
+        });
+        this.$router.push('/')
+        clearInterval(a)
+      }, 1000)
+      
+    },
     next() {
       if (this.active++ > 2) this.active = 0;
       const newRequest = Object.assign(

@@ -59,7 +59,7 @@ export default {
     },
     getUser() {
       this.user = {
-        name: "Hoa Pham",
+        name: "Truong Jackie",
         role: "IT Department",
         email: "thaycacac@gmail.com",
         avatar:

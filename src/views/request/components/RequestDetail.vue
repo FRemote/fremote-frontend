@@ -76,7 +76,23 @@ export default {
       baseUrl,
       requestDetail: {},
       value: new Date() + 1,
-      group: "mission"
+      group: "mission",
+      list1: [
+        { name: 'Mission', id: 1 },
+        { name: 'Mission', id: 2 },
+        { name: 'Mission', id: 3 },
+        { name: 'Mission', id: 4 }
+      ],
+      list2: [
+        { name: 'Mission', id: 5 },
+        { name: 'Mission', id: 6 },
+        { name: 'Mission', id: 7 }
+      ],
+      list3: [
+        { name: 'Mission', id: 8 },
+        { name: 'Mission', id: 9 },
+        { name: 'Mission', id: 10 }
+      ]
     };
   },
   components: {

@@ -20,8 +20,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click.prevent="createTask"
-          >Confirm</el-button
+        <el-button type="primary" @click.prevent="createTask">Confirm</el-button
         >
       </span>
     </el-dialog>
