@@ -13,28 +13,32 @@
     <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
       <el-table-column align="center" label="Id" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.row.id }}
         </template>
       </el-table-column>
-      <el-table-column label="Title">
+      <el-table-column label="Date">
         <template slot-scope="scope">
-          {{ scope.row.title }}
+          {{ scope.row.date }}
         </template>
       </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
+      <el-table-column label="Checkin 1" width="200" align="center">
         <template slot-scope="scope">
-          <el-tag>{{ scope.row.author }}</el-tag>
+          {{ scope.row.checkinOne }}
         </template>
       </el-table-column>
-      <el-table-column label="Readings" width="115" align="center">
+      <el-table-column label="Checkin 2" width="200" align="center">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.checkinTwo }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="Date" width="220">
+      <el-table-column align="center" label="Checkin 3" width="200">
         <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          {{ scope.row.checkinThree }}
+        </template>
+      </el-table-column>
+      <el-table-column align="center" label="Checkin 4" width="200">
+        <template slot-scope="scope">
+          {{ scope.row.checkinFour }}
         </template>
       </el-table-column>
     </el-table>
@@ -47,14 +51,14 @@ import { parseTime } from '@/utils'
 import FilenameOption from './components/FilenameOption'
 import AutoWidthOption from './components/AutoWidthOption'
 import BookTypeOption from './components/BookTypeOption'
-
+import data from './data'
 export default {
   name: 'ExportExcel',
   components: { FilenameOption, AutoWidthOption, BookTypeOption },
   data() {
     return {
       list: null,
-      listLoading: true,
+      listLoading: false,
       downloadLoading: false,
       filename: '',
       autoWidth: true,
@@ -62,21 +66,15 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+    this.list = data
+    console.log(data);
   },
   methods: {
-    fetchData() {
-      this.listLoading = true
-      fetchList().then(response => {
-        this.list = response.data.items
-        this.listLoading = false
-      })
-    },
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
-        const filterVal = ['id', 'title', 'author', 'pageviews', 'display_time']
+        const tHeader = ['id', 'date', 'Checkin 1', 'Checkin 2', 'Checkin 3', 'Checkin 4']
+        const filterVal = ['id', 'date', 'checkinOne', 'checkinTwo', 'checkinThree', 'checkinFour']
         const list = this.list
         const data = this.formatJson(filterVal, list)
         excel.export_json_to_excel({
