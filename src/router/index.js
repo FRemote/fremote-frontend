@@ -58,7 +58,8 @@ export const asyncRoutes = [
     name: "Request",
     meta: {
       title: "Request work from home",
-      icon: "guide"
+      icon: "guide",
+      roles: ["admin"]
     },
     children: [
       {
@@ -116,16 +117,16 @@ export const asyncRoutes = [
     path: "/today",
     component: Layout,
     meta: {
-      title: "Today",
-      icon: "peoples",
-      roles: ["admin"]
+      title: "My Today",
+      icon: "user",
+      roles: ["editor"]
     },
     children: [
       {
         path: "",
         component: () => import("@/views/today"),
-        name: "Working today",
-        meta: { title: "Today" }
+        name: "My Today",
+        meta: { title: "My Today" }
       }
     ]
   },
@@ -143,46 +144,6 @@ export const asyncRoutes = [
         component: () => import("@/views/request/create"),
         name: "Working today",
         meta: { title: "Create request" }
-      }
-    ]
-  },
-  {
-    path: "/permission",
-    component: Layout,
-    redirect: "/permission/page",
-    hidden: true,
-    name: "Permission",
-    meta: {
-      title: "Permission",
-      icon: "lock",
-      roles: ["admin", "editor"]
-    },
-    children: [
-      {
-        path: "page",
-        component: () => import("@/views/permission/page"),
-        name: "PagePermission",
-        meta: {
-          title: "Page Permission",
-          roles: ["admin"]
-        }
-      },
-      {
-        path: "directive",
-        component: () => import("@/views/permission/directive"),
-        name: "DirectivePermission",
-        meta: {
-          title: "Directive Permission"
-        }
-      },
-      {
-        path: "role",
-        component: () => import("@/views/permission/role"),
-        name: "RolePermission",
-        meta: {
-          title: "Role Permission",
-          roles: ["admin"]
-        }
       }
     ]
   },
@@ -215,7 +176,6 @@ const createRouter = () =>
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes
   });
-
 const router = createRouter();
 
 export function resetRouter() {

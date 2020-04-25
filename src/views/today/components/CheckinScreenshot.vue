@@ -1,46 +1,49 @@
 <template>
   <div>
-    <div id="demo">
-      <div align="center">
-        <el-button
-          id="magic"
-          v-on:click="magic"
-          v-waves
-          class="filter-item"
-          type="primary"
-        >
-          Start Checkin
-        </el-button>
-        <el-button
-          id="super"
-          v-on:click="takeBoth"
-          v-waves
-          class="filter-item"
-          type="primary"
-        >
-          Submit Checkin
-        </el-button>
-      </div>
-
-      <video id="faceVideo" autoplay></video>
-      <video id="screenVideo" autoplay></video>
-      <div>
-        <img id="faceImg" src="" />
-        <img id="screenImg" src="" />
-      </div>
-      <canvas style="display:none;"></canvas>
+    <div align="bet" style="margin-bottom: 5px">
+      <span>{{ date }}</span>
+      <el-button
+        id="magic"
+        v-on:click="magic"
+        v-waves
+        class="filter-item"
+        type="info"
+        icon="el-icon-check"
+      >
+        Start Check-in
+      </el-button>
+      <el-button
+        id="super"
+        v-on:click="takeBoth"
+        v-waves
+        class="filter-item"
+        type="primary"
+      >
+        Submit
+      </el-button>
     </div>
+    <video id="faceVideo" autoplay></video>
+    <video id="screenVideo" autoplay></video>
+    <div>
+      <img id="faceImg" src="" />
+      <img id="screenImg" src="" />
+    </div>
+    <canvas style="display:none;"></canvas>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Screenshot",
+  data() {
+    return {
+      date: new Date(),
+      isStart: true
+    }
+  },
   methods: {
     magic: async () => {
       const faceVideo = document.querySelector("#faceVideo");
       const screenVideo = document.querySelector("#screenVideo");
-      //call face camera
       await navigator.mediaDevices
         .getUserMedia({ video: true })
         .then(steam => {
@@ -49,7 +52,6 @@ export default {
         .catch(err => {
           console.log(err);
         });
-      //call share screen
       await navigator.mediaDevices
         .getDisplayMedia()
         .then(steam => {
@@ -69,24 +71,16 @@ export default {
       //take faceshoot
       canvas.setAttribute("width", 800);
       canvas.setAttribute("height", 500);
-
-      canvas.getContext("2d").drawImage(faceVideo, 0, 0);
-
-      let dataUrlFace = canvas.toDataURL("image/png");
-      //faceImage src png:base64
-      console.log(dataUrlFace);
-
-      faceImg.setAttribute("src", dataUrlFace);
-      faceVideo.srcObject = undefined;
-
+      // canvas.getContext("2d").drawImage(faceVideo, 0, 0);
+      // let dataUrlFace = canvas.toDataURL("image/png");
+      // faceImg.setAttribute("src", dataUrlFace);
+      // faceVideo.srcObject = undefined;
       //take screenshot
-      canvas.setAttribute("width", 2000);
-      canvas.setAttribute("height", 1100);
+      canvas.setAttribute("width", 1535);
+      canvas.setAttribute("height", 900);
       canvas.getContext("2d").drawImage(screenVideo, 0, 0);
 
       let dataScreenUrl = canvas.toDataURL("image/png");
-      //screenImage src png:base64
-      console.log(dataScreenUrl);
 
       desktopImg.setAttribute("src", dataScreenUrl);
       screenVideo.srcObject = undefined;
@@ -107,9 +101,8 @@ export default {
 </script>
 
 <style scoped>
-#demo {
-  width: 100%;
-  height: 100%;
+.el-dialog__body {
+  padding: 30px 0;
 }
 #screenImg {
   width: 100%;
@@ -121,9 +114,10 @@ export default {
   width: 30%;
 }
 #screenVideo {
-  width: 60%;
+  width: 100%;
 }
 #faceVideo {
-  width: 30%;
+  width: 25%;
+  position: absolute;
 }
 </style>

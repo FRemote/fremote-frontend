@@ -1,6 +1,15 @@
 <template>
-  <div class="dashboard-editor-container">
-    <div class=" clearfix">
+  <!-- <div class="dashboard-editor-container"> -->
+    <el-calendar v-model="value">
+      <template
+        slot="dateCell"
+        slot-scope="{date, data}">
+        <p :class="data.isSelected ? 'is-selected' : ''">
+          {{ data.day.split('-')[2] }} {{ data.isSelected ? 'working online' : ''}}
+        </p>
+      </template>
+    </el-calendar>
+    <!-- <div class=" clearfix">
       <pan-thumb :image="avatar" style="float: left">
         Your roles:
         <span v-for="item in roles" :key="item" class="pan-info-roles">{{ item }}</span>
@@ -12,8 +21,8 @@
     </div>
     <div>
       <img :src="emptyGif" class="emptyGif">
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -21,11 +30,11 @@ import { mapGetters } from 'vuex'
 import PanThumb from '@/components/PanThumb'
 
 export default {
-  name: 'DashboardEditor',
   components: { PanThumb },
   data() {
     return {
-      emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3'
+      emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3',
+      value: new Date()
     }
   },
   computed: {
