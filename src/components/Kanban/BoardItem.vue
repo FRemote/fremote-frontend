@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     setData(dataTransfer) {
-      dataTransfer.setData("Text", "");
+      dataTransfer.setData("Text", ""); 
     },
     editTask(id) {
       this.dialogFormVisible = !this.dialogFormVisible;
