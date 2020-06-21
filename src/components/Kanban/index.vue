@@ -1,7 +1,13 @@
 <template>
   <div class="board-column">
     <div class="board-column-header">
-      {{ headerText }}
+      <div class="board-column-header__title">
+        {{ headerText }}
+      </div>
+      <i
+        class="el-icon-more board-column-header__more"
+        @click="editTask(idx)"
+      ></i>
     </div>
     <draggable
       :list="list"
@@ -11,7 +17,7 @@
     >
       <!-- <transition-group> -->
       <div v-for="(element, idx) in list" :key="element.id" class="board-item">
-        <div class="board-item-wrap">
+        <!-- <div class="board-item-wrap">
           <span class="board-item-title"
             >{{ element.title }} {{ element.id }}</span
           >
@@ -20,10 +26,17 @@
             <i class="el-icon-delete" @click="removeTask(idx)"></i>
             <form-dialog :dialog-form-visible="dialogFormVisible" />
           </div>
-        </div>
+        </div> -->
+        <board-item :item="element" :idx="idx" />
       </div>
-      <el-button v-if="headerText === 'Todo'" icon="el-icon-edit" style="margin-top: 7px; width: 100%;">Add new task</el-button>
-      
+      <el-button
+        v-if="headerText === 'Todo'"
+        icon="el-icon-edit"
+        style="margin-top: 7px; width: 100%;"
+      >
+        Add another card
+      </el-button>
+
       <!-- </transition-group> -->
     </draggable>
   </div>
@@ -32,12 +45,14 @@
 <script>
 import draggable from "vuedraggable";
 import FormDialog from "./FormDialog";
+import BoardItem from "./BoardItem";
 
 export default {
   name: "DragKanbanDemo",
   components: {
     draggable,
-    FormDialog
+    FormDialog,
+    BoardItem
   },
   data: () => ({
     dialogFormVisible: false
@@ -80,14 +95,28 @@ export default {
   border-radius: 3px;
 
   .board-column-header {
-    height: 50px;
-    line-height: 50px;
-    overflow: hidden;
-    padding: 0 20px;
-    text-align: center;
-    background: #333;
-    color: #fff;
-    border-radius: 3px 3px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+
+    .board-column-header__title {
+      // height: 50px;
+      // line-height: 50px;
+      overflow: hidden;
+      // padding: 0 20px;
+      // text-align: center;
+      // background: #333;
+      // color: #fff;
+      border-radius: 3px 3px 0 0;
+      font-weight: 600;
+    }
+
+    .board-column-header__more {
+      color: #6b778c;
+      padding: 5px;
+    }
   }
 
   .board-column-content {
@@ -103,21 +132,22 @@ export default {
     .board-item {
       cursor: pointer;
       width: 100%;
-      height: 64px;
+      height: auto;
       margin: 5px 0;
       background-color: #fff;
       text-align: left;
-      line-height: 54px;
+      // line-height: 54px;
       padding: 5px 10px;
       box-sizing: border-box;
       box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.2);
-      .board-item-wrap {
-        display: flex;
-        justify-content: space-between;
-        .el-icon-edit {
-          padding-right: 5px;
-        }
-      }
+      border-radius: 3px;
+      // .board-item-wrap {
+      //   display: flex;
+      //   justify-content: space-between;
+      //   .el-icon-edit {
+      //     padding-right: 5px;
+      //   }
+      // }
     }
   }
 }
