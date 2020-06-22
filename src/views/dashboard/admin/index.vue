@@ -1,10 +1,5 @@
 <template>
   <div>
-    <aside>
-      You have 10 request today
-      <router-link to="/request">Click here</router-link>
-      <!-- <el-button @click="push">Click here</el-button > -->
-    </aside>
     <div class="dashboard-editor-container">
       <el-row :gutter="32">
         <el-col :xs="24" :sm="24" :lg="8">
@@ -28,12 +23,12 @@
 </template>
 
 <script>
-import PanelGroup from './components/PanelGroup'
-import LineChart from './components/LineChart'
-import RaddarChart from './components/RaddarChart'
-import PieChart from './components/PieChart'
-import BarChart from './components/BarChart'
-import Push from 'push.js'
+import PanelGroup from "./components/PanelGroup";
+import LineChart from "./components/LineChart";
+import RaddarChart from "./components/RaddarChart";
+import PieChart from "./components/PieChart";
+import BarChart from "./components/BarChart";
+import Push from "push.js";
 
 const lineChartData = {
   newVisitis: {
@@ -52,10 +47,10 @@ const lineChartData = {
     expectedData: [130, 140, 141, 142, 145, 150, 160],
     actualData: [120, 82, 91, 154, 162, 140, 130]
   }
-}
+};
 
 export default {
-  name: 'DashboardAdmin',
+  name: "DashboardAdmin",
   components: {
     PanelGroup,
     LineChart,
@@ -67,16 +62,16 @@ export default {
     push() {
       Push.create("FWork", {
         body: "You need checkin at 14:00PM",
-        icon: '/icon.png',
+        icon: "/icon.png",
         timeout: 4000,
-        onClick: function () {
-            window.focus();
-            this.close();
+        onClick: function() {
+          window.focus();
+          this.close();
         }
-    });
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -92,7 +87,7 @@ export default {
   }
 }
 
-@media (max-width:1024px) {
+@media (max-width: 1024px) {
   .chart-wrapper {
     padding: 8px;
   }
