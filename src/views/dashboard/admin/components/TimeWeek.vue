@@ -1,32 +1,23 @@
 <template>
-  <div class="wrap-work-time">
-    <p class="title">{{title}}</p>
-    <p class="time" :class="type === 'warning' ? 'warning' : '' ">{{time}}</p>
+  <div class="wrap-time-week">
     <p class="date">{{date}}</p>
+    <el-progress :stroke-width="20" :percentage="process" :status="type" :show-text="false"></el-progress>
+    <p class="time">{{time}}</p>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wrap-work-time {
+.wrap-time-week {
   text-align: center;
-  .title {
+  padding: 15px;
+  .date {
     color: #283593;
     font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 10px;
   }
   .time {
-    color: #67c23a;
-    font-size: 2.5rem;
-    margin: 0;
-    font-weight: bold;
-  }
-  .date {
-    color: #bebebe;
-    margin-top: 8px;
+    color: gray;
     font-weight: 300;
     font-size: 0.9rem;
-    margin-bottom: 25px;
   }
   .warning {
     color: #e6a23c;
@@ -37,7 +28,7 @@
 <script>
 export default {
   props: {
-    title: {
+    date: {
       type: String,
       default: ""
     },
@@ -45,9 +36,9 @@ export default {
       type: String,
       default: ""
     },
-    date: {
-      type: String,
-      default: ""
+    process: {
+      type: Number,
+      default: 50
     },
     type: {
       type: String,
