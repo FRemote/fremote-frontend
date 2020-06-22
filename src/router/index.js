@@ -131,24 +131,6 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: "/create-request",
-    component: Layout,
-    meta: {
-      title: "Create request",
-      icon: "documentation",
-      roles: ["editor"]
-    },
-    children: [
-      {
-        path: "index",
-        component: () => import("@/views/request/create"),
-        name: "Working today",
-        meta: { title: "Create request" }
-      }
-    ]
-  },
-
-  {
     path: "/excel",
     component: Layout,
     redirect: "/excel/export-excel",
