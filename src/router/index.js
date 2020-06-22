@@ -53,6 +53,24 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   {
+    path: "/plugin",
+    component: Layout,
+    name: "Plugins",
+    meta: {
+      title: "Plugins",
+      icon: "guide",
+      roles: ["admin"]
+    },
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/plugin"),
+        name: "Plugins",
+        meta: { title: "Plugins" }
+      }
+    ]
+  },
+  {
     path: "/requests/:id",
     component: Layout,
     hidden: true,
