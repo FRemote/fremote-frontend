@@ -1,6 +1,24 @@
 <template>
   <div>
     <div class="dashboard-editor-container">
+      <el-row class="time-work">
+        <el-col :span="5">
+          <time-work title="Worked Today" time="5h 46m" date="June 24, 2020" />
+        </el-col>
+        <el-col :span="5">
+          <time-work title="Worked This Week" time="33h 40m" date="June 22, 2020 - June 28, 2020" />
+        </el-col>
+        <el-col :span="4">
+          <time-work title="Worked Last Week" time="33h 55m" date="June 15, 2020 - June 21, 2020" />
+        </el-col>
+        <el-col :span="5">
+          <time-work title="Edited Work Time" time="0h 32m" date="Total 2 Edit" type="warning" />
+        </el-col>
+        <el-col :span="5">
+          <time-work title="Worked Last Week" time="139h 27m" date="June 2020" />
+        </el-col>
+      </el-row>
+
       <el-row :gutter="32">
         <el-col :xs="24" :sm="24" :lg="8">
           <div class="chart-wrapper">
@@ -28,6 +46,7 @@ import LineChart from "./components/LineChart";
 import RaddarChart from "./components/RaddarChart";
 import PieChart from "./components/PieChart";
 import BarChart from "./components/BarChart";
+import TimeWork from "./components/TimeWork";
 import Push from "push.js";
 
 const lineChartData = {
@@ -56,7 +75,8 @@ export default {
     LineChart,
     RaddarChart,
     PieChart,
-    BarChart
+    BarChart,
+    TimeWork
   },
   methods: {
     push() {
@@ -75,6 +95,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.time-work {
+  background: white;
+  margin-bottom: 30px;
+}
+
 .dashboard-editor-container {
   padding: 32px;
   background-color: rgb(240, 242, 245);
