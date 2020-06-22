@@ -1,11 +1,13 @@
 <template>
-  <div class="board-item-wrap" v-on:click="editTask(idx)">
-    <div class="board-item-wrap__label">
+  <div class="board-item-wrap" @click="editTask(idx)">
+    <div class="board-item-wrap__label" @click="showingLabel()">
       <span
         class="card-label board-item-wrap__label--green mod-card-front"
         title="Front-end"
       >
-        <!-- <p class="label-text">Front-end</p> -->
+        <p class="label-text" v-if="isShowLabel">
+          Front-end
+        </p>
       </span>
     </div>
     <span class="board-item-title"
@@ -14,7 +16,6 @@
     <!-- <div class="board-item-icon">
       <i class="el-icon-edit" @click="editTask(idx)"></i>
       <i class="el-icon-delete" @click="removeTask(idx)"></i>
-      <form-dialog :dialog-form-visible="dialogFormVisible" />
     </div> -->
     <div class="board-item-wrap__sub">
       <div
@@ -35,6 +36,7 @@
         />
       </div>
     </div>
+    <form-dialog :dialog-form-visible="dialogFormVisible" />
   </div>
 </template>
 
@@ -58,16 +60,23 @@ export default {
     idx: {
       type: Number,
       default: 0
+    },
+    isShowLabel: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     setData(dataTransfer) {
-      dataTransfer.setData("Text", ""); 
+      dataTransfer.setData("Text", "");
     },
     editTask(id) {
       this.dialogFormVisible = !this.dialogFormVisible;
+    },
+    showingLabel() {
+      this.$emit("update:isShowLabel", !this.isShowLabel);
     }
-  }
+  },
 };
 </script>
 
@@ -84,6 +93,7 @@ export default {
   .board-item-wrap__label {
     overflow: auto;
     position: relative;
+    z-index: 100;
 
     .card-label {
       float: left;

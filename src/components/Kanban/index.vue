@@ -4,10 +4,7 @@
       <div class="board-column-header__title">
         {{ headerText }}
       </div>
-      <i
-        class="el-icon-more board-column-header__more"
-        @click="editTask(idx)"
-      ></i>
+      <i class="el-icon-more board-column-header__more"></i>
     </div>
     <draggable
       :list="list"
@@ -27,7 +24,11 @@
             <form-dialog :dialog-form-visible="dialogFormVisible" />
           </div>
         </div> -->
-        <board-item :item="element" :idx="idx" />
+        <board-item
+          :item="element"
+          :idx="idx"
+          :isShowLabel.sync="cardLabelVisible"
+        />
       </div>
       <el-button
         v-if="headerText === 'Todo'"
@@ -55,7 +56,7 @@ export default {
     BoardItem
   },
   data: () => ({
-    dialogFormVisible: false
+    cardLabelVisible: false
   }),
   props: {
     headerText: {
@@ -81,6 +82,7 @@ export default {
     },
     editTask(id) {
       this.dialogFormVisible = !this.dialogFormVisible;
+      console.log(this.dialogFormVisible);
     }
   }
 };
