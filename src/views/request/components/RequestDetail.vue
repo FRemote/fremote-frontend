@@ -6,16 +6,8 @@
           <span class="label">Request Date:</span>
         </el-col>
         <el-col :span="21">
-          <el-date-picker
-            disabled
-            v-model="value"
-            type="date"
-            placeholder="Pick a day"
-          >
-          </el-date-picker>
-          <span class="create-date"
-            >Create Date: Apr 24, 2020</span
-          >
+          <el-date-picker disabled v-model="value" type="date" placeholder="Pick a day"></el-date-picker>
+          <span class="create-date">Create Date: Apr 24, 2020</span>
         </el-col>
       </el-row>
       <el-row :gutter="20">
@@ -23,9 +15,7 @@
           <span class="label">Reason:</span>
         </el-col>
         <el-col :span="21">
-          <p>
-            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
-          </p>
+          <p>Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.</p>
         </el-col>
       </el-row>
     </div>
@@ -39,20 +29,8 @@
           class="kanban todo"
           header-text="Todo"
         />
-        <Kanban
-          :key="2"
-          :list="[]"
-          :group="group"
-          class="kanban working"
-          header-text="Working"
-        />
-        <Kanban
-          :key="3"
-          :list="[]"
-          :group="group"
-          class="kanban done"
-          header-text="Done"
-        />
+        <Kanban :key="2" :list="[]" :group="group" class="kanban working" header-text="Working" />
+        <Kanban :key="3" :list="[]" :group="group" class="kanban done" header-text="Done" />
       </div>
     </div>
     <div class="post">
@@ -66,7 +44,7 @@
 </template>
 
 <script>
-import baseUrl from '@/utils/config'
+import baseUrl from "@/utils/config";
 import Kanban from "@/components/Kanban";
 import { getRequestDetail } from "@/api/request";
 
@@ -78,20 +56,20 @@ export default {
       value: new Date() + 1,
       group: "mission",
       list1: [
-        { name: 'Mission', id: 1 },
-        { name: 'Mission', id: 2 },
-        { name: 'Mission', id: 3 },
-        { name: 'Mission', id: 4 }
+        { name: "Mission", id: 1 },
+        { name: "Mission", id: 2 },
+        { name: "Mission", id: 3 },
+        { name: "Mission", id: 4 }
       ],
       list2: [
-        { name: 'Mission', id: 5 },
-        { name: 'Mission', id: 6 },
-        { name: 'Mission', id: 7 }
+        { name: "Mission", id: 5 },
+        { name: "Mission", id: 6 },
+        { name: "Mission", id: 7 }
       ],
       list3: [
-        { name: 'Mission', id: 8 },
-        { name: 'Mission', id: 9 },
-        { name: 'Mission', id: 10 }
+        { name: "Mission", id: 8 },
+        { name: "Mission", id: 9 },
+        { name: "Mission", id: 10 }
       ]
     };
   },
@@ -109,8 +87,8 @@ export default {
   methods: {
     accept() {
       this.$message({
-        message: 'You accept Truong Jackie working remote.',
-        type: 'success'
+        message: "You accept Phạm Ngọc Hòa working remote.",
+        type: "success"
       });
     }
   }

@@ -19,29 +19,12 @@
 
     <div class="user-bio">
       <div class="user-education user-bio-section">
-        <div class="user-bio-section-header"><svg-icon icon-class="education" /><span>Position</span></div>
-        <div class="user-bio-section-body">
-          <div class="text-muted">
-            Frontend Developer
-          </div>
+        <div class="user-bio-section-header">
+          <svg-icon icon-class="education" />
+          <span>Position</span>
         </div>
-      </div>
-
-      <div class="user-skills user-bio-section">
-        <div class="user-bio-section-header"><svg-icon icon-class="skill" /><span>Analysis</span></div>
         <div class="user-bio-section-body">
-          <div class="progress-item">
-            <span>Work online frequency</span>
-            <el-progress :percentage="30" />
-          </div>
-          <div class="progress-item">
-            <span>Number of successful checkins</span>
-            <el-progress :percentage="80" />
-          </div>
-          <div class="progress-item">
-            <span>Finish the job frequency</span>
-            <el-progress :percentage="95" />
-          </div>
+          <div class="text-muted">Frontend Developer</div>
         </div>
       </div>
     </div>
@@ -49,7 +32,7 @@
 </template>
 
 <script>
-import PanThumb from '@/components/PanThumb'
+import PanThumb from "@/components/PanThumb";
 
 export default {
   components: { PanThumb },
@@ -58,15 +41,15 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: '',
-          email: '',
-          avatar: '',
-          role: ''
-        }
+          name: "",
+          email: "",
+          avatar: "",
+          role: ""
+        };
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

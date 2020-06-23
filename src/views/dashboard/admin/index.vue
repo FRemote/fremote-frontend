@@ -41,19 +41,14 @@
       </el-row>
 
       <el-row :gutter="32">
-        <el-col :xs="24" :sm="24" :lg="8">
-          <div class="chart-wrapper">
-            <raddar-chart />
-          </div>
-        </el-col>
-        <el-col :xs="24" :sm="24" :lg="8">
+        <el-col :xs="24" :sm="24" :lg="12">
           <div class="chart-wrapper">
             <pie-chart />
           </div>
         </el-col>
-        <el-col :xs="24" :sm="24" :lg="8">
+        <el-col :xs="24" :sm="24" :lg="12">
           <div class="chart-wrapper">
-            <bar-chart />
+            <pie-chart />
           </div>
         </el-col>
       </el-row>

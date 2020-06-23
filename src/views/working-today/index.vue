@@ -8,7 +8,10 @@
         <el-col :span="18" :xs="24">
           <el-card>
             <el-tabs v-model="activeTab">
-              <el-tab-pane label="Activities" name="activity">
+              <el-tab-pane label="Work Time" name="work-time">
+                <work-time />
+              </el-tab-pane>
+              <el-tab-pane label="Trello" name="trello">
                 <request-detail />
               </el-tab-pane>
               <el-tab-pane label="Check-in" name="timeline">
@@ -27,16 +30,18 @@ import { mapGetters } from "vuex";
 import UserCard from "./components/UserCard";
 import RequestDetail from "./components/RequestDetail";
 import Checkin from "./components/Checkin";
+import WorkTime from "./components/WorkTime";
+import TimeAnalytic from "./components/TimeHour";
 
 import taskData from "../table/wt-data-detail";
 
 export default {
   name: "Item details",
-  components: { UserCard, RequestDetail, Checkin },
+  components: { UserCard, RequestDetail, Checkin, WorkTime, TimeAnalytic },
   data() {
     return {
       user: {},
-      activeTab: "activity",
+      activeTab: "work-time",
       taskData: null,
       taskDataLoading: false
     };
@@ -59,11 +64,11 @@ export default {
     },
     getUser() {
       this.user = {
-        name: "Truong Jackie",
+        name: "Phạm Ngọc Hòa",
         role: "IT Department",
         email: "thaycacac@gmail.com",
         avatar:
-          "https://scontent-hkt1-1.xx.fbcdn.net/v/t1.0-9/p960x960/92497429_1240585112803862_5104665409794080768_o.jpg?_nc_cat=107&_nc_sid=7aed08&_nc_ohc=x54zD0gzShwAX89BkIY&_nc_ht=scontent-hkt1-1.xx&_nc_tp=6&oh=7235ad8ae6bd2c1c913b539bb2685739&oe=5EC7A585"
+          "https://avatars3.githubusercontent.com/u/29374426?s=460&u=94e43b7bb559b7c1ccae04de24374d105ed1ca6b&v=4"
       };
     }
   }
