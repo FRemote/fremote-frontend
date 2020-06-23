@@ -36,7 +36,6 @@ import TimeAnalytic from "./components/TimeHour";
 import taskData from "../table/wt-data-detail";
 
 export default {
-  name: "Item details",
   components: { UserCard, RequestDetail, Checkin, WorkTime, TimeAnalytic },
   data() {
     return {
