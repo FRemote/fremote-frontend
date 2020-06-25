@@ -47,9 +47,18 @@
       </el-col>
     </el-row>
     <el-table :data="tableData" stripe style="width: 100%">
-      <el-table-column prop="date" label="Date" width="180"></el-table-column>
-      <el-table-column prop="name" label="Name" width="180"></el-table-column>
-      <el-table-column prop="address" label="Address"></el-table-column>
+      <el-table-column prop="task" label="Công việc" width="180"></el-table-column>
+      <el-table-column prop="project" label="Dự án" width="180">
+        <template slot-scope="{row}">
+          <el-tag :type="row.project === 'Fremote' ? 'danger' : 'warning'">{{ row.project }}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column prop="totaltime" label="Thời gian"></el-table-column>
+      <el-table-column prop="scale" label="Đánh giá">
+        <template slot-scope="{row}">
+          <el-rate v-model="row.rate" disabled show-score text-color="#ff9900"></el-rate>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -66,24 +75,28 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
+          task: "Homepage Redesign",
+          project: "Fremote",
+          totaltime: "1:27:00",
+          rate: "3.7"
         },
         {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
+          task: "Futures Icon",
+          project: "EduKids",
+          totaltime: "0:50:10",
+          rate: "3.3"
         },
         {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
+          task: "Futures Icon",
+          project: "Fremote",
+          totaltime: "1:03:25",
+          rate: "3.1"
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
+          task: "Invision comments",
+          project: "EduKids",
+          totaltime: "2:15:10",
+          rate: "4.8"
         }
       ]
     };
