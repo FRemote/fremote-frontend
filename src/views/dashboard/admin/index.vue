@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     push() {
-      Push.create("FWork", {
+      Push.create("FRemote", {
         body: "You need checkin at 14:00PM",
         icon: "/icon.png",
         timeout: 4000,

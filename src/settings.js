@@ -1,8 +1,8 @@
 module.exports = {
-  title: 'FWork',
+  title: "FRemote",
   showSettings: true,
   tagsView: true,
   fixedHeader: false,
   sidebarLogo: false,
-  errorLog: 'production'
-}
+  errorLog: "production"
+};
